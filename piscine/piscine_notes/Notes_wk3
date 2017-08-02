@@ -1,0 +1,293 @@
+Make files
+	https://www.gnu.org/software/make/manual/make.html	
+	make : call file, read it and execute it
+	Makefile : file with your compilation rules.  I think it has to be names this
+	you can put rules in your make file
+		execute them by putting make xxxx in commane line
+
+	syntax:
+		target: dependency
+			command
+
+		rule:
+			what rule does
+			// all commands must be preceded by a tab
+
+		$@  // name of the target (left side)
+		$^	// left and right sides of the colon respectively
+
+	If you call make with no arguments, then the first rule will be used
+	If you need multiple lines use \
+
+
+	to call rule:
+		rules are basically terminal commands followed by args
+
+		clean:
+			/bin/rm -f *.o //removes *.o files
+
+		fclean:
+
+		make rule_name
+		@make rule_name // this should silence the command line from printing the rule
+
+		// for following syntax make knows that it needs to compile
+		// the .c files to get the .o files
+		CC=gcc
+		CFLAGS=-I.
+
+		hellomake: hellomake.o hellofunc.o
+		     $(CC) -o hellomake hellomake.o hellofunc.o -I.
+
+
+	dependencies:
+		rule_b: rule_a
+			echo "rule B"
+
+		// rule B is dependent on A, so when you call rule B, it first calls
+		// rule a.  B/c of the echoes you can see this very clearly in the output.
+
+	variables
+		TEXT = "whatever the text is"
+		// you can now refer to the text variable in your make file
+		// capital letters for variables
+		echo $(TEXT)
+			put the variable in this syntax to use it
+
+
+
+Libraries
+	gcc all files with -c flag to get .o files
+	ar rc libname.a //library name must start with lib and end with .a
+		-v // verbose output
+		-q // quick: append files to existing library, or create a new library
+
+	to compile your main file with a library 
+		gcc main -L. -lstr  // last flag is the library name.  you can shorten lib to just l
+
+	gcc -I projfile/headers 
+		-I lets you specify a source for header files.
+
+Pointer Functions
+	
+	you don't need to name the variables in ptf functions
+
+	example : 
+		//first line create a pointer function
+		//second line opint your pointer functionat a function
+
+		void	(*funptr)(char);
+
+		f = &ft_putchar;
+		f('z'); // outputs z
+
+	typedef example
+		prototype: typedef	void(*funptr)(char);
+
+		funptr	f;
+
+		f = &ft_putchar;
+		f('z'); // outputs z
+		// returns z... not exactly sure about this
+
+	the purpose of pointer functions
+
+Chained lists
+	example
+		
+		#ifndef __list_h__
+		# define __list_h__
+		
+		typedef struct s_list t_list 	// this defines 1 new data structure
+		 								// and s_list aka t_list
+
+		struct s_list {
+			char	*str;
+			t_list	*next;	// equivalent to struct s_list *next
+							// because of the typedef you can use t_list
+							// ... little mystified by thsi.
+		};
+
+		t_list	*add_link(t_list *list, char *str); // prototype
+			// function that returns a t_list and takes a t_list 
+			// and char pointer as args	
+			// basically what it does is create a pointer to a new
+			// t_list instance.  It then assigns the two input variables
+			// to the new instance's properties.
+
+		void	print_list(t_list *list);
+
+		#endif
+
+		____main_____
+
+		#include "list.h"
+		#include <stdio.h>
+
+		int main (void)
+		{
+			t_list	*list;
+
+			list = NULL;
+				// list = the result of add_list
+				// add list creates a new instance of t_list
+				// and returns it
+			list = add_link(list, "toto\n"}
+					// list = 	{
+									str = {"toto"},
+									next = pointer to:
+											list {
+													NULL
+												}
+								}						
+			list = add_link(list, "tata\n"}
+					// list =	{
+									str = "tata\n"
+									next = pointer to:
+												list {
+													str = "toto"
+													next = list {Null}
+												}
+								}
+			list = add_link(list, "tutu\n"}
+
+
+			print_list(list);
+
+			return(0);
+		}
+
+		_____t_list function_____
+		//
+		t_list *add_link(t_list *list, char *str)
+		{
+			t_list	*tmp; 	// create a pointer to the t_list struct
+							// think about if you had a pointer to int
+
+			tmp = (t_list*)malloc(sizeof(t_list)); //allocate memory
+			if (tmp)		// if tmp is not null, then the memory 
+							// allocation was succesful
+			{
+				tmp->str = str;		// set the tmp property str = to the
+				 					// input str 
+				tmp->next = list;	// set the 'next' property for the 
+									// struct that tmp points at
+									// the next property is a pointer
+									// to another t_list.  Which creates
+									// essentially a list of t_lists
+			}
+			return tmp;
+		}
+
+		// so it creates a list...
+		// one thing to note is that when you are creating such a list
+		// that you are pushing onto the front of it whenever you 
+		// add an element/
+
+		chained list tips:
+			(void *data)
+				as an input to a function can mean a pointer to anything.
+				useful, because it can be adapted to point at a 
+				multitude of data types.
+
+Files
+	open files in c
+		open (path, flags, opening mode)
+			int fd;
+
+			fd = open ("alph", O_RDONLY);
+				// fd is the file descriptor
+			fd = open ("42", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR);
+				write only || create (if doesn't exist)
+				give read write permissions to the user
+
+			flags
+				O_RDONLY
+				O_WRONLY
+				O_RDWR
+				O_CREAT
+				O_TRUNC
+				O_APPEND
+
+			returns -1 in case of an error
+
+			int close(file name) : closes file returns 0:success of -1:failure
+
+			write(fileDescriptor, str, sizeof(str))
+
+	read:
+		read(file, buffer, BUFFER SIZE)
+			file : pass in the file directory generated by open
+			buffer : this is the string where the contents of the while will be 
+				output to. You should set the size of this variable statically or
+				dynamically. Usually:
+				buf = [BUFFER + 1] (+1 so that you can put a \0 on the end of the string)
+			BUFFER : his is the limit on the size of memory that the read command will 		process
+
+Binary Trees: data structure that allows you to strore and organize any data type
+	allow you traverse lists faster
+	good for large amounts of data
+
+	in depth traversal : going from the top do the bottom and repeating
+		dfs:
+
+	bredth first traversal : reading arcross each level fo the tree.
+		bfs:
+
+	dichotomy : testing a value
+
+	red black tree : a tool for balencing a binary tree
+		it's useful because a balanced binary tree is faster to search, because you got through less links to get to your number.
+
+		enum e_rb_color
+		{
+			RB_BLACK,
+			RB_RED
+		}
+
+		typedef structures_rb_node
+		{
+			struct s_rb_node	*parent
+			struct s_rb_node	*right
+			struct s_rb_node	*left;
+			void				*data;
+			enum e_rb_color		*color;
+		}					 	t_rb_node;
+
+		RB trees
+			parent/root is always black
+			all null leaves are aways black
+			red node only has black paths
+			whichever node of the tree the amount of black nodes is the same
+			on both sides of the root.
+
+		insertion
+
+		when you have an unbalacnced tree you can rotate it, which basicall
+		setting a new node as the root, so that the tree is balanced on 
+		either side of the root.  you need to then reset the colors.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

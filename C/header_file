@@ -1,0 +1,32 @@
+Header File Notes
+
+Errors
+	duplicate symbol error:
+		> this happens when you define something in the header, 
+		and include it in multiple source files
+		> one solution is to define something in a seperate header file and include it in just the c fiile you need it in
+		> also see globals
+	Undefined symbols error
+		> maybe you didn't include all the files when you compiled
+		
+Globals
+	extern
+		> declare in header: extern int g_global
+		> then in a seperate c file define the global.  You will need to include the type when you define it, even though that was apart of the declaration in the header..?
+		> this will prevent the multiple inclusion compiler error
+
+
+Typedef vs. just using struct
+	guessing that typedef creates a model that can be used repeatedly, and struct is a one offer.
+
+	> struct definition inside a type def?
+		http://stackoverflow.com/questions/20336244/typedef-inside-a-c-struct
+	> http://www.geeksforgeeks.org/function-pointer-in-c/
+
+#define : used for macros
+	> define goes through your program and any place it finds a the term you defined, it replaces it with what you defined it as
+		> is not typed
+		> 
+	> object like
+		> generally used to name a parameter (a number) that is going to be used a lot, think BUFFSIZE
+

@@ -1,0 +1,52 @@
+> for installing packages on 42 machines pip install <package> --user
+
+
+
+Question:
+	> are class attributes accessible through dot notation?
+		or do you have to use methods to return them/
+
+
+> how to convert values to strings
+	> str() will convert vaules to strings that are human readable
+> int()
+	> convert string to int
+
+> opening a file
+	> f = open('filename', opperation)
+		> put operation in quotes
+		> r -> read (assumed if opperation is omited)
+		> w -> write
+		> a -> append
+		> r+ -> read and write
+	> when you're done with a file: f.close
+
+> reading a file
+	> must open the file first
+	> works basically like read in c
+	> str = f.read(size)
+		> when size is omitted, the function reads the whole file.  It's your problem if the machine don't have enough memory to handle the contents.
+	> returns empty string when the end of file is reached
+	> f.readline() reads a file line by line
+		> new line character left on the end
+
+> writing to a file
+	open( file.txt, "r+")
+	f.seek(100) : moves the file pointer to the specified byte in the file
+	f.seek(-1, 2) : moves the file pointer to the byte before the end
+		> the second argument is optional, tells where to start counting the bytes from
+			> 0 : default: beginning
+			> 1 : from where the last file pointer left off
+			> 2 : fromt the end
+		> calling f.write or f.read after changing where the file pointer is pointin will result in writing at that spot
+	> writing to a file means overwriting
+	> if you want to insert to a file : need to take all the lines out into a list, make edits, then rewrite everything to file
+		lines = f.readlines()
+		## search lines for where you want to make changes
+		f.writelines(lines)
+
+
+> JSON
+	> import json
+	> dumps: takes python object and conv erts it to a string
+	> loads: takes a JSON sting and converts it to a pythong object

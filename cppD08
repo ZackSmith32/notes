@@ -1,0 +1,32 @@
+STL - standard Library
+
+> provides "containers"
+	> container : holder object that stores a collection of other objects
+	> vecotr, queue, stack, heaps, linked lists, trees
+
+
+> std::list<int>  // a templated class for lists.  Pass <int> to indicate tell the template what kind of list you want
+	> std::list<int>	list1;		// how to instantiate a list container
+
+> iterator // stl container equivalent to pointers
+	> std::list<int>::const_iterator 	abc; // how you instantiate an itterator	
+	> std::list<int>c::const_iterator 	abcEnd = list1.end(); // value meaning we are passed the last element
+		> use it to compare against the first iterator to know when you are at the end
+
+	> abc = list1.begin();
+		> *abc : how to access what is at the current positions, like a pointer
+
+> std::map : c++ equivalent of a hash table
+	> you don't have to use strings as keys
+	> std::map<std::string, IOperation*>
+		> sample instantiation of key value pair
+
+> std::vector<int>
+
+> std::array<int, size>
+	> fixed size, have to know the size at compile time
+
+> std::set
+	> store unique elements
+	> elements are const
+	> elements can be inserted or removed

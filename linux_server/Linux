@@ -1,0 +1,72 @@
+
+Linux
+
+> what are the differend directories in system root for
+	> bin: for binaries that can be executed from the shell
+	> sbin: 
+	> etc
+	> boot
+
+> linux commands see terminal
+
+> ssh and scp : see SSH
+
+> Users
+	> view users : 
+	> Add user : log in as su or sudo
+		> useradd -m -g users <name>
+			> -m create a home directory for the user
+			> -g default group
+	> passwd <user name>
+		> this changes or initiates the password for the specified user
+		> can also use this command to change the password for the current user without root permissions
+	> su - <username> : goes to that users home dir
+		> logs you in as that user
+		> type exit to get back to previous user
+> Delete user
+	> userdel
+
+> Permissions and Ownership
+	> rwx rwx rwx
+		> first owner of file
+		> second other people in the same group
+		> third everyone wlse
+	> chown: change the owner of the file
+	> chmod: modify the permissions
+
+	> changing file permissions on linux box
+		> lsattr : ls attributes
+		> chattr : change attributes (man this fore more deets)
+
+Groups
+	> a collection of users that share the same permissions
+	> groups
+		> returns your groups
+	> groups <user name>
+		> returns groups of said user
+	> wheel : old linux thing
+	> groupadd <groupname>
+	> gpasswd -a <username> <groupname>
+		> add a user to a group
+		> -d : remove user from group
+	> add user to group.  the group is a secondary group...
+		> usermod -a -G <groupname> <user>
+		> add user to group as a primary group
+			> usermod -a <groupname> <user>
+		> you need to logout in order for the changes to take affect
+	> groupdel
+
+TMUX : terminal multiplexer
+
+
+
+
+for zsmith-droplet
+	> users: 
+		> zsmith 
+		> zaphod : beeblebrox
+
+		> since I set up root with no password I can only get to root from my machine because I set up the RSA key pair
+		> backup for this should be hiding the rsa key pair somewhere in case this computer dies
+	> while I'm on the computer with RSA key, then I log in as one of the users that's not root, if I type exit, then I can log out of that user, and I will be root again.  This is weird because I can't do su because there is no password, so authentication fails... I think this kinda a weird scenario.  Might try to add a password to root so that I can get to root from other compuers
+		> ok added a pswd to root, so now it works, but still might be a cool trick to do if someone is working to just type exit

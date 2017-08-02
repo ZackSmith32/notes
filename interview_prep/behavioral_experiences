@@ -1,0 +1,45 @@
+
+
+Interview Preparation
+
+Farmers: optimization
+	> Story: At Farmers, our department hired a vendor to do regression analysis on our data to optimize key performance metrics.  Since I had worked on regressions in college, I requested to be the lead analyst on this project.  
+
+	I was able to help managers understand the results of regression analysis, and make recomendations on how to implement the results.  In the end the much more precise changes that we made had 1-2% increase on the KPI we were targeting.
+
+	> Challenges: I had to refresh my knowledge on regressions, so that I could translate complex statistical metrics into terms that product managers could understand.
+		> explaining the meaning of r squared goodness of fit
+			> (explained variation) / (total variation)
+		> chi-squared : just a distribution like the normal distribution
+		> standard error value
+
+	> Enjoyed: I enjoyed the responsibility of having to be the person to answer the regression questions in the department.  It inspired me to learn it well.
+
+	> Conflicts: The main conflict was inability to convey statical concepts to non-technical people.  For the next time I will prepare visulizations to set the scene.
+
+
+42: core wars
+	> Core wars is a project that I feel is the best demonstration of my work.  I'm finally combining all the things that I've learned into one project.  Incorperating time complexity optimizations, code style/readability, code architecture, knowledge of C.
+
+		>  style : deciding wheather to allocate for variables on stack or in heap.  Default used to always be heap.
+		>  knowledge : always using the right variable type (unsigned), size_t, U_INT_MAX
+		>  speed : using linked lists rather than a vector.
+		>  readability : function naming
+		>  architecture : deciding when to add to an existing structure, and when to create a new one.
+		>  knowledge of c : implementing an array of function pointers at compile time is difficult becasue the declaration is not normal.  I realized that I had this problem and found the solution online which was not intuitive
+
+	> Leadership : we had one member of our team who wanted to jump into the project and start building it on his own.  It's great to have a proactive team member but it made it difficult for everyone to get involved.  My strategy for handling this was to get this guy to explain his code to the team.  I then suggested some changes to his code.  We debated the changes, made a few of them, and then continued to build the application as a team.  After that this team member communicated much more, and sought input on the things he was working on, and the rest of the team were able to claim sections of the code to work on.
+
+Mvmnt: starting a company
+	>  Starting Mvmnt showed me how difficult it is to organize a team around a nebulous goal.
+
+	>  The big mistake was not knowing exactly what we were trying to build.  We had a lot of ideas, but not one unifying purpose.
+
+	>  Enjoyed : the "do whatever it takes to get the job done" mentality.
+
+	>  Leadership : I worked to refine our mission statement from a loose collection of ideas to concise purpose.  This helped guide team memers in their work and, made pitching our product to investors easier.
+
+	>  Conflicts: When trying to hammer out the core mission of our company there were a lot of differences in opinion.  I made sure to provide support for all my ideas.  I also encouraged people to question my supporting arguments, this led to constructive non-offensive communication about ideas.
+
+	>  Do differently : I would work on consolidating our idea before getting started on the project.  The process of discussing an idea at great length reveals a lot of weaknesses in an idea.  I apply this lesson to all ideas, whether it's about starting a business or how to approach a programming problem, even if I am workong on the project solo.
+	

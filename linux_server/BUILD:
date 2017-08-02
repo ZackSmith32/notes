@@ -1,0 +1,26 @@
+DIRECTORY OF CURRENT DOCKER:
+	~/python_docker_build/
+		> initial image with python installed
+	~/docker/test2_docker/
+		> testing of push_swap docker
+
+BUILD:
+	> creates an image from docker file
+	> the dockerfile specifies which image to build on top of
+	> -t names the image whatever comes after
+
+docker build -t zsmith32/run_ps .
+
+RUN:
+	> creates and starts container in one command
+	> the -v sectio specifies a file that you want to bind to container.  The second part is where it will be located in the container.  This file if modified by the container will then be available outside the container.
+	> remove the previous container, if you are reusing the name for multiple runs, which I do.
+		> added the --rm to remove the container when it is done running
+
+docker rm running
+
+docker run --rm --name=running -v ~/docker/testing_docker/mount_dir/:/app/mount_dir zsmith32/run_ps
+
+
+
+

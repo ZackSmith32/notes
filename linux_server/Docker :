@@ -1,0 +1,114 @@
+Docker :
+
+> Why use containers?
+	> Containerization is the process of distributing and deploying applications in a portable and predictable way.
+		> light weight 
+		> portable
+		> predictable
+	> docker uses existing system utils, so it is not like installing a whole new operating system (aka VM)
+	> docker is designed so that each container runs one application, this is known as service oriented architecture. By default, any data created inside the container is only available from within the container and only while the container is running, the data stays in the container if you continue running it later.
+
+> Docker overview
+	> Docker file : settings for your docker container
+		> defines what goes on inside of the docker container
+	> requirements.txt
+		> external file that can be referrenced from docker file for build specifications
+	> app.py
+		> part of the docker image
+
+	> docker ...
+		> how you execute docker commands
+	> where does the data go?
+		> data that is created inside of the container remains there until the container is removed
+
+
+> commands (all prefaced with "docker")
+	> search <image you want to search for>
+		> searches remote docker hub for an image
+	> pull <image name>
+		> pulls the docker image named from Docker hub, saves it on system
+		> when pushing to docker hub use this format
+			> <username>/whatever
+	> push <image name>
+		> sends image to docker hub
+	> run <image name> <a command to execute>
+		> not sure if you can specify command in command line if there is a CMD in the docker file
+		> creates a container from the specified image
+		> starts container
+		> if the image is not downloaded docker will download it
+		*> -it
+			> gives you shell access to a container
+			> exit
+				> leaves interactive shell
+		> --name=<name>
+			> gives the container a name
+		> -d
+			> detaches the process and runs in background (daemon)
+			> allows you do do other things in the terminal whilst the container is running
+		> -v <path to host file>:<path to docker file>
+			> bind mount a volume
+			> start paths with '~' ro '/'
+				> not doing so will mean that you are naming a volume, which you don't want.  (volume = folder = directory)
+		> --rm 
+			> removes the container when it is done
+	> images
+		> shows the images downloaded 
+	> commit
+		> send image to docker hub
+		> look up syntax for this
+	> ps
+		> show active containers
+		> -a
+			> show all containers
+	> start <container id>
+		> starts a container from an exiting image
+	> stop <container id>
+		> stops that container
+	> cp
+		> copies files between container and local file system
+	> rm/rmi
+		> rm
+			> remove container
+		> rmi
+			> remove image
+	> export turns container file system into .tar file
+	> build -t <name for docker hub> <directory wher Dockerfile is, "." in this case>
+
+
+Networking
+	> container to container
+	> container to host
+	> bindmount a volume
+		> links a file inside container to a file outside of it so that the contents can be read by the host
+		> see -v in commands > run
+
+Docker-py
+	> python module for running docker commands
+	> 
+
+Questions:
+	> how to launch a docker from python
+		> docker-py
+	> how to know that a container has finished running
+	> how do your restart an existing container
+		docker start <container>
+
+Resources
+	> cheatsheet
+		> https://github.com/wsargent/docker-cheat-sheet
+	> docker-py
+		> docs
+			> http://docker-py.readthedocs.io/en/stable/images.html?highlight=build
+		> tutorial
+			> https://smarketshq.com/how-to-use-docker-py-307f4029cf
+
+
+ERRORS
+	> Got permission denied while trying to connect to the Docker daemon
+		> you do not have permissions
+			> use sudo or
+			> add yourself to the docker group
+				> sudo usermod -a -G docker $USER
+				> su - $(USER)
+	> docker commands not working?
+		> remember to put "docker" at the beginning

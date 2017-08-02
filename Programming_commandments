@@ -1,0 +1,20 @@
+Programming Commandments
+
+1. Always fully set up your dev environment.  Think about what you are going to need in the future
+
+2. Always set up your architecture (this is kinda like psudo-coding) first
+
+3. Test your code as you go.  Not TDD, but make sure the shit works.  If you build up your tests as you go you will have a robust tests as opposed to flimsy tests
+
+4. Sudo code
+
+5. Talk to other people and get feedback about your strategy, this will help you understand if you are missing any elements of the problem.
+
+6. Challenge yourself to think of all the ways to break your program
+	> your program should not break
+
+7. If possible parse data into your data structure, then test for bad input data.  Testing while parsing confuses your functions
+
+8. Don't stack up arrays to deep, makes it difficult to unwind
+
+9. Never push incomplete code to a repo that more than just you contributes to.  Forget that, never push incomplete code.

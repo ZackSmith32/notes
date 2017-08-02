@@ -1,0 +1,118 @@
+Notes from Udemy Course: Python Beyond the Basics OOP
+
+> python conventions
+	> pythons uniform design makes it easier to use and extend
+	> classes start with uppercase
+
+> three pillars
+	> encapsulation : storing data in an instance
+		> using setter/getter methods
+		> ensuring the integrity of the data in an instance
+		> class variables are not encapsulated instance data
+	> inheritance
+		> calsses can inherit attributes from other classes
+
+	> polymorphism
+		> objects of disimilar types can be treated in the same matter
+			> when two objects of different types can be treated in the same matter
+			> aka : when two classes have methods with the same name
+		> len : example of method that appears in many different objects
+
+> OOP
+	> Modules vs. Classes
+		> module: file that contains Python code
+			> usually code that will be imported (not executed)
+		> class: 
+	> objects : instances of classes
+	> class : blueprint for an instance
+	> instance : a constructed object
+	> type : class the instance belongs to
+	> attribute : an object value
+	> method : a callable attribute defined in the class
+	> state : the data in an object
+
+	> duck typing : when you trust that an class has a method because that is the agreement of the 
+		> if it walks like a duck, quacks like a duct, must be a duck
+
+> classes
+	> classes are also objects, though they should not be used in the same way that class instances are used
+	> class instances aka objects know which class they are from
+		> vars defined in the class are avaialable to the instance
+
+	> abstract classes: blueprints how subclasses should be designed
+		> all subclasses must implement the abstract method
+		> not meant to be instanced
+		> import abc : has stuff for abstract classes
+		> include private method on top
+			> __metaclass__ = abc.ABCMeta
+		> use decorator : @abc.abstractmethod
+
+
+> methods: functions associated to an object
+	> instance methods (bound)
+		> called like : instance.method()
+		> when a method is called it implicitly passes the instance as the 1st argument
+	> class methods (unbound) : use decorator
+		> takes class not instance as argument
+		> replace self with cls (doesn't change anything)
+		> decorator: specieal function that modifies a function
+			> makes the code clearer
+			> ex: @classmethod : this is called a decorator
+			> 	@classmethod
+				def get_count(cls):
+					return cls.count
+	> static methods (unbound): use decorator
+		> does not require an argument
+		> does not work with class or instance
+		> @staticmethod
+		> def filterint(value):
+			> notice that the argument is not self
+
+> attributes
+	> instance attributes
+		> specific to the instance
+		> not declared in the class
+	> class attributes i like big butts i can not lie
+		> declared and set in the class
+		> this attribute is linked to the class object
+			> access it by ClassName.attribute
+			> all instances will get this attribute, and it may change
+		> all instances have this variable
+		> this attribute is not "encapsulated" in the instance
+
+> inheritance
+	> inheriting constructors/methods
+		> call parent methods using super(ChildClass, self).method(args)
+			> look in super class of ChildClass for a specific method then pass the instance and args
+			> equivalent to naming the super class, but more python-y
+	> inheriting from multiple classes
+		> put the classes that child class inherits from in the args of the class
+		> classes are searched
+			> 1. in the order they are in the args
+			> 2. in the parents (grandparents) of first parent
+				> aka depth first search
+		> diamond shaped inheritance
+			> when a class appears multiple times in the depth first search of inheritence
+			> the result is that you take the last time that the repeated class appears (python specific)
+	> applications
+		> inherit: user parent
+		> overide: redifine
+			> just make a new def with the same name
+		> extend: do work in addition the that in parent's method
+			> override, do your own subclass things, then also call super to get the super functionality
+		> provide: implement abstract method
+
+> composition : independent classes that can work together, but independent
+	> decoupling
+	> less brittle, a change is less likely to fuck up another part of the code
+	> one corolary is a function that accepts a function pointer, and you can pass in any function pointer that accepts the specified arguments.
+
+> lookup hierarchy
+	> instance
+	> class
+	> any class from which this class inherits
+
+> everything in python is an object and has a type
+	> some of the types: function, type, bool, int, list, etc...
+	> dir(variable) shows the methods of a variable
+		> methods that start with __ are private methods : attributes used internally

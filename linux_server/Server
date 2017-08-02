@@ -1,0 +1,81 @@
+Server
+
+> how to start a new django proj
+	> https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-uwsgi-and-nginx-on-ubuntu-14-04
+
+> virtual env
+	> virtualenv is creating a specific environment for one python project
+	> then there is a virtualenv wrapper
+		> wrapper makes things simpler. by abstracting some complex commands into 1 word commands
+			>you can do the "workon" command to activarte one of your envs. 
+		> you have to be "workon"ing and environment to start that project's server.
+	> workon <vitualenv name> : work in virtual env
+	> deactivate : gets you out of the virtual env
+	> showvirtualenv <name> : shows details of env
+	> lsvirtualenv : shows all virtual envs
+	> rmvirtualenv: removes a virtual env
+
+> python stuff?
+	> manage.py
+		runserver : runs server
+	> common django file that does things..
+
+> uWSGI
+	> connects django to Nginx to the internet
+		> translates traditional web requests into a format that django can process
+	> WSGI : is a protocol
+		>protocol that deifines a standard interface for communication between an application and a web server.
+		> uwsgi : a low level protocol used by uWSGI server to speak to web servers.
+	> setup : see how to start a new django proj above
+	> config file : /etc/uwsgi/sites
+	> sudo systemctl start uwsgi
+
+> NGINX
+	
+	> configure fire wall (ufw)
+		> sudo ufw allow <portno>/tcp
+		> sudo ufw status : shows which ports are open
+		> sudo ufw enable : turn on server
+		> sudo ufw disable: turns off server
+			> note: you need to restart the server when you want firewall changes to take effect
+
+	> sudo systemctl start uwsgi
+	> sudo systemctl restart nginx
+
+> Complete setup summary
+	> startup script : start on boot
+		> systemd
+		> /etc/systemd/system/uwsgi.service
+			> points to uwsgi executable, and passes config file
+
+	> manual start
+		> to propogate changes to website, you need to restart uwsgi
+		> nginx :
+			> config : /etc/nginx/sites-available/pushswap42
+			> startup
+				> check config syntax : sudo nginx -t
+				> sudo systemctl restart nginx
+		> uwsgi :
+			> may have to restart daemon
+				> systemctl daemon-reload
+			> startup script : starts uWSGI on boot
+				> /etc/systemd/system/uwsgi.service
+			> config
+				> /etc/uwsgi/sites/pushswap42.ini
+			> start
+				> sudo systemctl start uwsgi
+			> restart
+				> sudo systemctl daemon-reload
+				> sudo systemctl restart uwsgi
+		> django :
+			> run : ./managepy runserver
+			> settings : ~/pushswap42/pushswar42/settings.py
+
+> Adding swap (space on disk where the computer can put stuff when memory is full)
+	> I think that I need this to install django, which is failing when installing upgrade
+	> free -m
+		> shows available memory on computer
+	> dh -h
+		> shows driver information
+	> this tutorial
+		> https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-centos-7

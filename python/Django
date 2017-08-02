@@ -1,0 +1,31 @@
+Django
+
+// prepend 'python' to all commands
+
+> ./manage.py startapp <name>
+	> starts a subapp
+		> aka creating a new file with boilierplate shit
+
+> run server
+	> manage.py runserver
+
+> set up database
+	> python manage.py migrate
+		> look in settings, installed apps, then figure out which tables each app (in settings) needs.
+	> whenever you make a change to your models
+		> python manage.py makemigrations
+		> python manage.py migrate
+
+> open django shell
+	> manage.py shell
+	> can be used to view sqlite database
+
+> setting up postgres
+	> lots of tutorials to do basic set up
+	> things that were tough.. I think I don't know for some reason took me a while to figure out
+		> getting the migration to work
+			> manage.py makemigrations <python appname (like the one from settings)>
+			> manage.py migrate
+	> other than that seems like almost identical code for accessing postgres as with sqlite
+	> pgadmin: gui for database
+	> psql : included command line interface for postgres

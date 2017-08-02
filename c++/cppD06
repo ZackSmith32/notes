@@ -1,0 +1,36 @@
+Casting
+	> static cast
+		> convert an object from one type to another
+		> can work on any type, as long as the type conversion is defined
+			> so basically the types need to be related
+		> can work on pointer or referrence
+			> must be related types
+			> derived to base
+			> base to derived
+		> dog * puppy = new yellowDog();
+			> static cast without static cast operatro
+
+	> dynamic cast
+		> can only work on pointers or referrences
+		> from prev. ex.
+			> yellowDog puppy = dynamic_cast<yellowdog*>(pd);
+		> typically used in down cast
+		> does runtime type check
+		> requires the 2 types to be polymorphic (have a virtual function)
+	
+	> const cast : deals with const variables
+		> only works on pointer/reference
+		> cannot work on object itself
+		> can only work on same type
+		> char * modifiable = const_cast<char*>(str)
+			> this casts str (which is a const char*) to a char *
+
+	> reinterperit cast
+		> take a memory address, and read the raw memory, and put it in a data type
+		> only works on pointers or referrences
+		> dog * pup = reinterpret_cast<dog*>(p)
+			> this takes the address p and makes it into a dog type
+
+	> c++ preferable over c style casting
+		> less usage errors	
+			> 4 different types of cast, and each one has a purpose.

@@ -1,0 +1,28 @@
+Ubuntu
+
+apt : package management sweet
+	> sudo apt-get update : updates packages
+
+LEMP: Linux Nginx MySql PHP
+	> sudo apt-get install nginx
+		> sudo nano /etc/nginx/sites-available/default : this is the config file.  The linked tut shows how to edit this for PHP
+		> can edit the root dir where nginx looks for content to serve
+		> make sure to restart nginx after making changes
+			> sudo systemctl reload nginx
+	> sudo apt-get install mysql-server
+		> sudo mysql_install_db
+		> sudo mysql_secure_installation
+	> sudo apt-get install php-fpm php-mysql : install PHP
+		> configure php: 
+			> sudo nano /etc/php/7.0/fpm/php.ini
+				> turn off cgi.fix_pathinfo=0
+	> https://www.digitalocean.com/community/tutorials/how-to-install-linux-nginx-mysql-php-lemp-stack-in-ubuntu-16-04
+
+ufw : firewall
+	> lets you disable all ports except for specific ones
+	> sudo ufw allow ssh
+	> sudo ufw allow 80/tcp
+	> if you want ssl/tls you need to open 443
+	> sudo ufw show added
+	> sudo ufw enable to start it
+

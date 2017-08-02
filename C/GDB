@@ -1,0 +1,90 @@
+lldb
+
+	1. lldb <executable>
+	2. run or r aliases for "process launch"
+	3. control commands: 
+		> finish or f : pop out
+		> continue or c : pop in
+		> s or step : step in
+		> next or n : step over
+	5. commands
+		> print <variable> : prints the value of a variable
+			> prtint array[5]
+		> list : shows 5 lines of code around where you are
+			> list again : 10 lines of code
+		> list<file name>: <line number> : that code shows lines around a specific line number
+		> list<function> : shows the beginning of a function
+		
+		> -- commands need to have an ending --
+			> ex: --stop-at-entry --
+
+		> breakpoints
+			> breakpoint set
+				> -f or --file : then file name
+				> -l or --line : line number
+					> breakpoint set --line 18
+				> -n or --name : function name
+					> --name doesn't need a closing --
+					> you can specify multiple --name
+						> breakpoint set --name foo --name bar
+			> breakpoint list : lists all the breakpoints you set
+				> shows if a breakpoint was resolved : a location gets resoved when thye file address it corresponds to gets loaded into the program you are debugging.
+			> breakpoint command add <command>
+				> if you don't specify command it will take command line args
+
+		> help <command>
+			> shows all the options for a command
+
+		> backtrace : aka bt : I think you might have to put : thread backtrace if you don't want to see all threads
+			> shows fucntions that have been called but are not finished yet
+			> use the up and down arrows to select which scope you want to looko at
+
+		> watchpoint : watch set var <name> : watch a variable whenever it changes
+
+		> set variable i = 0 : modify variable on the fly
+
+		> thread until 100 : run until you get to line 100, the program ends, or the program leaves the frame.
+
+		> frame variable : how to inspect a frame's arguments
+			> can type the name of a specific variable to see just that one
+			> can use &, *, ->, [] to view subelements of a variable.
+			> frame select <number> : switch to another frame
+
+Techniques
+	1. segfaults
+		> run til program segfaults
+		> call backtrace and print 
+	2. compile with flag: fsanitize=address AND -g .  Then use lldb to inspect the places where if fails
+		> fsanitize locates where you have dirty memory, i.e. memory that you wrote to but that wasn't allocated.
+		> lldb ./push_swap
+		> run <arguments paster here>
+			> alternative: if you want to run with a file input on stdin
+				> process launch -i <file>
+		> ctrl + c to get out of fsanitize
+		> thread backtrace aka bt
+		> frame select 9 : pick whichever frame you want to look at
+			> frame variable (check out "help frame variable" , for a bunch of helpful flags to include)
+			> p *moves : prints out the struct pointed to by moves
+
+
+Other
+	1. lldb uses shortest unique string on commands, so for breakpoint you can write br
+	2. apropos command that will search the help text for all commands for a particular word and dump a summary help string for each matching command.
+	3. 
+
+	brew install valgrind
+
+	--leak-check=yes ./a.out <arg1> <arg2>
+	valgrind --track-origins=yes ./a.out
+
+	http://stackoverflow.com/questions/34573039/possible-memory-leak-valgrind-in-osx-el-capitan
+	http://stackoverflow.com/questions/11738938/valgrind-legitimate-possibly-lost-bytes-example
+
+Valgrind
+	valgrind --tool=memcheck --leak-check=yes ./a.out <arg1> <arg2>
+		> tool=memcheck is the default so this command is optional, but I left it in there because that is the syntax when using other tools.
+		> memory definitely lost: your program is leaking
+		> use stack trace to help locate where the malloc is that isn't getting freed.
+		> compile your files with -g for debugging options.
+	> --track-origins=yes
+		> provides more information when you get an uninitialized value error.

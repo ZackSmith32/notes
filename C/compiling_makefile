@@ -1,0 +1,70 @@
+
+
+gcc
+	: flags
+		> -o: specifies the name of the binary
+		> -c: specifies to change the c files into .o files (object files)
+			+ these can be useful for passing to other comilation functions notably library compilation
+	: library
+		> -L. -l<libname minu lib>
+			> seemingly unneccessary shortcut
+			> looks like this for libft -L. -lft (libft shortened minus lib = ft)
+		> alternate approach: provide file path
+			> -L. lib/libft.a
+		> if you include a library the has another library in it... you don't need to include that other library
+		> headers should not be put into the library
+
+ar	: for creating archives (aka libraries)
+	: library is basically a zip file of c funcions that can be used by other funcitons
+	: not advisable to include header file in library.  should be only .c files
+	
+	: compiling a library:
+		> you need to create .o files for all your c source files
+			+ gcc -c source1.c source2.c source3.c ect...
+		> link all your .o files into  a library
+			+ ar cr (or ar rc ??) xxx.o yyy.o zzz.o etc.
+
+	: in practice:
+		> if you want to use a custom library with a c file, then you need to compile the c file with a header for that library.  The library itself does not have a header already compiled in it.
+		> compiling looks like this:
+			+ gcc example.c -L/path/todirectory/ -l(lib name less lft.  Looks lik -lft for libft.a)
+
+	: other ar flags
+		> ar t libft.a
+			+ this prints out the contents of libft
+		> ar x libft.a
+			+ unpacks the .o files in a library
+		> ar r libft.a new_func.o
+			+ insert specified fiile into archive (lib) with replacement
+		> ar rc nameofarchive.a file.o.....
+			+ create and archive and insert the specified .o files.
+		> ar d libft.a some_file.o
+			+ deletes specified file from archive (lib)
+		> ar ru libft.a some_files.o
+			+ replaces all the files in the lib that are older than the specified o files.
+
+libtool : for adding libraries within libraries
+
+Makefile
+	: commands : 
+		> $@ : left side of colon
+		> $^ : right side of colon
+		> $(patsubst pattern, replace pattern with this, text to alter)
+			+ this syntax does the same thing but is shorter 
+			+ $(text to alter : pattern=replacement text)
+	: libtool -static -o libftprintf.a libprint.a includes/libft.a
+		> this sequence combines two libraries into 1
+	: make -k
+		> keep goin
+		> 
+	: make --directory=dir
+		> dir is the directory to change to
+	: make <whatever command you want> -C dir
+		> run 'make' in a different directory
+	: setting up your make file so that it compiles each c file individually
+		> this has the benefit of only recompiling the files that have changed, which saves a lot of time when testing code.
+		> set it up so that the rule that creates your executable requires all .o files.
+			> so you need to have a list of all .o file in the arget of the rule (the left)
+		> the target points to a rule that looks like %.o : %.c
+			> this basically says go through all c files one by one
+			> whilst you are going through each .c file if they are not already compiled, or if they have changes your are creating .o files as necessary.  Since all of the .o files are a prerequisite for the executable rule that will ensure that all the c files are turned into .o files.

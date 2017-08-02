@@ -1,0 +1,18 @@
+
+
+
+> Big O notation
+	> Binary search: search for an element in a sorted array
+		> go to the middle, if the element your are looking for is smaller, go to the left, larger go to the right.  Do the same opperation on that half of the array.  Continue until you find the number
+		> what is the big O
+			> well each time you compare that is one operation
+			> each time you compare you half the number of possible elemets
+				> this is the feature that will determine the big O
+			> since you half the number of elements until it = 1
+				> that's like saying how many times do you need to cut in half a number
+				> which is equivalent to asking 2^x = array_size
+				> which is eqivalent to log array_size
+
+	> Recursion
+		> a recursive function that has two calls to itself
+			> O = number of branches ^ depth (depth often = N)

@@ -1,0 +1,46 @@
+Templates
+
+> functions that can operate with generic types
+	> can make a function that applies to multiple types without having to repeat the function
+	
+> 	template <typename T>
+	void	func(T var) {
+		return (var + 1);
+	}
+
+>	template <classname T>
+	class Array {
+		Array(T num );
+	}
+	> when creating a member function of a template class, the entire funciton must reside in the header
+		> you don't have to put the member function in the class definition, they just need to be in the same header file
+			> returnType	ClassName<T>::FuncName(args) {};  // need to put the <T> in there ... idk
+
+> typename
+	> when they type you are using is a dependent type (i.e. it's based on a template e.g. you have a template class) you have to prefix the template variable with "typename".
+		> had to do this when writing a template function for standard library (see d08 ex00)
+
+
+> with multiple types
+	templated <classname T, classname U, class name V>
+	func/or class
+
+> class name and typename are interchangable
+
+> To call
+	> class
+		> Array<int>	arr(args);
+		or
+		> Array<float>	arr(args);
+	> function: you do not have to include the type for a function
+		> if you pass a function pointer to a function templated, then, you do need to use the angle brackets to declare the type
+		> func(vars 1, vars 2)
+
+
+> Special features
+	> for class templates you can set a default type for the template
+		> template <classtype T = int>
+			> you can then call the class like
+				> ClassName<>	abc(arg1, arg2);
+					> notice empty angle brackets
+	> passing a function pointer as an argument (see above)

@@ -1,0 +1,38 @@
+Threads
+
+thread : independent string of instructions.  can be scheduled by the os
+
+https://computing.llnl.gov/tutorials/pthreads/
+
+q liu on youtube
+
+> exist within a process and use the process resources
+> duplicates only the resources that it needs to be independent
+	> threads within the same process share resources	
+> dies when the parent process dies
+
+> threads are light weight, much less than creating a new process
+
+Implementation
+	> main should call p_thread_exit, because this will stop main from finishing before it's threads are finsihed
+	> pthread_create(thread, attr, start_routine, arg) : creates a pthread 
+		> arg 
+			> argument that will be passed to the new thread
+			> must be cast to a void *
+				> if you need multiple args then use a struct
+			> make sure that what you pass cannot be changed by other threads.  This is one thing if not done could hinder thread safeness
+
+
+Fork
+	> create new process.  Have more overhead than threads.
+	> creates a clone of the code you are working on in a new process.
+	> to start: child_PID_or_zero = fork();
+		> makes a child or returns a value less than zero
+		> so this code will get cloned into the child, but within th child process fork() will return 0, not the PID of another child.  This! is how you differentiate between the parent and the child.
+	> wait(NULL);
+		> tells parent process to wait for child to finish.
+	> execl : pass to exec a string of code that you want to be executed on the command line.
+
+Processes
+	> each process has it's own file descriptor table
+	> also worth noting the at the web site at the top has good information about the difference between a new process and a new thread

@@ -1,0 +1,14 @@
+postgresql
+
+for django set up instructions see django
+
+open shell for specific database
+	> psql <database name>
+
+commands : in psql shell
+	> \dt
+		> shows tables of the database you are looking at
+	> \d+ <table name>
+		> shows table fields
+	> \du
+		> shows users on database

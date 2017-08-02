@@ -1,0 +1,107 @@
+questions
+	> what do they mean by heap?
+	> how does void assignment work exactly?
+		> to put characters in a void string
+			> use strcpy
+			> suggests that you can add char's 1 by 1 to a void string.
+			> I heard that void does not support the idea of a string, or additional data elements after the first, so you have to go one by one through the elements and not void_string[5]...??
+			> OR you can have a unsigned char pointer point at the first element of the void string (using assignment on the void to make it an unsigned char).  Then you can use your new pointer to change the memory addresses that the void pointer points at
+		> how to get data out of a void string
+			> use assignment (unsigned char*)void_string
+		> you can not do void to void assignments
+		> aparently you can have a void variable only a void pointer, this acording to compiler errors
+	> how to convert an int into an unsigned char
+		assignment: (unsigned char)(integer)
+	> defie assignement (for the purposes of better describing the above notes)
+	> NULL pointer
+		> instantiate a void pointer
+		> set the pointer = to NULL
+		> NULL is available from string.h
+			> size_t is also available from string.h
+
+nm -u *.o
+	> prints out every file and all of the non-static functions that it uses
+
+
+check for memory leaks
+	> http://valgrind.org/docs/manual/quick-start.html
+git hub for libft tests
+	https://github.com/alelievr/libft-unit-test
+
+ft_memset
+	> size_t is a struct that is similar to an unsigned int
+		> #include <string.h>
+		> cannot be negative
+	> Unsigned char
+		> can have a value from 0 to 255
+	> signed char (regular char)
+		> can have a value from -127 to 127
+		> hence the ascii table goes to 127
+	> cast: changing the type of a variable
+		> int	c
+		> (unsigned char)c
+			> turns it into a char
+			> if dest < count : behavior undefined
+		> http://en.cppreference.com/w/c/string/byte/memset
+
+ft_memcpy
+	> copy from void source to destination with some restrictions on params
+	> must convert src and dest into unsigned chars
+	> restrict type qualifier
+		> so if you have a function parameter that looks like (int *restrict b), then you can only modify that memory slot by doing functions through b, such as b[3] = 8
+		> this could happen if you have an array, and you use different portions of the array as args to a function.  If the portions of the array overlap then each one of those args could potentially modify the same memory slot.  This would result in undefined actions
+		> http://en.cppreference.com/w/c/language/restrict
+
+ft_memccpy
+	> copies a src to destination until a specific letter is reached, or until you reach n letters
+	> has restrict
+	> do we need to print "abort" if the number of characters to copy exceeds the number of characters in the source?
+		> ans: no, abort is how zsh handles undefined actions, and we aren't working with zsh
+	> how do we check if the function returns a pointer to the space after the end of the destination.
+
+ft_memmove
+	> basically memcpy except this one can handle it if the strings overlap
+	> the solution is that if the strings overlap there are two possibilities
+		1. the destination is first: in which case standard memcpy works fine
+		2. the src is first, in which case as you are copying from the beginning of the src you are actually overwriting the end of the src.  The solution is to copy starting in the back.
+
+
+ft_memdel
+	> frees the memory for a double pointer
+	> all you need to do is free ptr and *ptr
+		> because it is a void pointer you can assume that it is not a list
+		> you can assume this, because in order to iterate through a list the computer needs to know how much memory to jump over to get to the next element in the list.  If it is a void pointer it could be an int, char, unsigned char, etc... so the computer will not know how much memory each slot will take.
+		> wouldn't all pointers be the same size?
+
+
+Thoughts
+	>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

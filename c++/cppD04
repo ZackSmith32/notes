@@ -1,0 +1,47 @@
+Sub-typing polymorphism
+
+function overriding
+	> sub class redefines a method of parent
+	> virtual
+		> linkage dynamic (not static)
+
+
+Exceptions
+	> ex:
+		try 
+		{
+			if (/* there is an error /*)
+				throw std::exception()
+		}
+		catch (std::exception e)
+		{
+			// handle the error
+		}
+
+	> defining a new exception
+		> ex: inherit from exception
+			class MyException : public std::exception
+			{
+				public:
+					virtual const char* what() const throw()
+					{
+						reutrn ("Problem exists")
+					}
+			}
+		> throw() signifies that this function can throw an exception
+	> std::exception
+		> standard exception class
+		> you can define your own exceptions that inherit from this class
+			> all you have to do is redifine the "what()" function. This is the function that returns a string saying what happened
+			> ex:
+				class myExceptionClass : public std::exception {
+					virtual const char * what() const throw() {
+						return ("Grade to High");
+					}
+				}
+			> now you can throw that exception like so:
+				> throw myExceptionClass()
+				> so put this in a function that has potential for an error
+			> drop that funciton in a try catch
+				> catch(std::exception & e)
+					....

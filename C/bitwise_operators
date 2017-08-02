@@ -1,0 +1,29 @@
+Bitwise Operations
+
+Bitwise functions are very fast for the computer
+
+the idea of bitwise functions is to use the bits that are typically used to model ints, chars, longs etc to model other data.
+
+Bitwise operators compare two variables by the make up of their bits.
+
+	> & : returns 1 when both bits in the same column have 1
+		> ex:
+		0010 0101 (37)
+		&
+		0010 0010 (34)
+		=
+		0010 0000 (32)
+	
+	> | : returns 1 when at least one of the places has a 1
+		1001 1100
+		|
+		0010 1010
+		=
+		1011 1110
+	
+	> ^ : returns 1 when neither string has a 1 in that column
+		1110 0111     
+		^
+		0100 0010
+		=
+		0101 1010

@@ -1,0 +1,180 @@
+gcc flags
+	-Well
+	-Wextra
+	-Werror: make all warnings into errors
+
+Functions in c
+	Have a type int … etc.
+	must return that type
+
+Command line
+	gcc: compiler
+	-o: define the type of gcc output file (the name of the file you created)
+vi
+List of Functions
+	write(x, y, z)
+		x: where to "write"
+		y: string to write
+			include a \n in the string to get rid of % at end of output line
+		z: number of chars from the string to write
+
+C in 42 Minutes
+Compound Types
+	array: 
+		type name[numberOfElementsInArray]
+		^type is for the contents of the array
+		arrays are ints
+	struct: an object
+		struct structure_name
+		{
+			type name
+			typen name
+
+		}
+
+pointer (27:00 min)
+	int *p // 
+	p = &a // p contains the address of a
+	*p = 1 => a=1 // *p is the value at the address that p points to
+
+	&a : this is the address of a in memory
+
+	d03 Assignment
+		check out swap: will help to understand pointers better
+		int *variable : 
+			*ptr is the value of the address that ptr points to
+			
+			variable = &a : variable is = to a's address
+			you can access the value variable points at by typing *variable : use asteric to check what is at the address
+			you can add to variable which changes the address that it points at, doing so will give it access to another variables value
+
+	d03 Dereferencing
+		you can set the value of a variable by setting the value of a pointer to it
+			a = 2
+			int *ptr
+			ptr = &a //set ptr = address of a
+			ptr = 5 // since there is no star we are talking about the value stored at the adress that ptr points to.  That value is now set to 5, and therefore a is now 5
+			a // a=5
+		you can have pointers to pointers : **ptr
+			you can change the original variable with this just like above
+
+	d03 Pointer Arithmetic
+
+	d03 Arrays
+		int tab[10];
+		int *ptr;
+
+		ptr = tab // tab is an address for the first element in the array
+		*(ptr + 3) = 867
+			you add three to the address of the first element in tab
+			you then assign to that address the value of 867
+			when tab looks at that address for the 3rd value it will see 867
+
+		int *tabPtr[2] : an array of pointers
+			int tab[10]
+			int *tabPtr[2]
+
+			tabPtr[1] = tab
+			tabPtr[1][3] = 42 // set the 4th value of tab to 42
+
+			tab[3] // will return 42
+			~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+			tabPtr[1][3] same as *(*(tabPtr + 1) + 3) // don't exactly get this
+
+	d03 Character String
+		char 	*ptr
+
+		'h' // this notation passes the ascii value of the character
+			// this can be printed by putchar
+			// for each asc
+
+		"dsf" // quotation marks are for character strings
+			// \0 defines the end of a string
+
+		ptr = "toto"
+			// ptr is a pointer to the first character in the string
+			// bc toto is a character string, denoted by double quotes, 
+			// each character is 1 byte
+		ft_putchar(*ptr) 
+			// this prints out t
+			// this is because you are printing out the value of 
+			// the pointer ptr
+			// which is pointing at the first value in "toto"
+			// eqivalent to ptr[0]
+			// ptr[1] will return 'o'.
+			// this is a little weird, bc w/o the asteric a pointer
+			// should return the address in memory, but I think that
+			// the square brackets denote that you take the value? 
+
+			
+
+		all strings end with \0
+		you cannot assign something else to a place where a string is allready assigned
+
+		inverted commas are the characters value
+
+	d03 Pointer Usage
+		when you pass an argument into a function you are passing a copy of the argument
+		if the function changes the value of the arg, it is only changing the copy
+		the arg from the original function is unchanged
+		you can overcome this by passing a pointer, aka the address of the argument to the function, you can then modify what that address points to see code below
+
+		void fct(int *a)
+		{
+			*a = 12;
+		}
+		int main(void)
+		{
+		int 	a
+		fct(&a) // &a is the address of a
+		ft_putchar(a);
+		return (0);
+		}
+
+		*** the purpose of pointers is to move around an array, a character string (an array), pass a variables address to a function (one of the most common uses)
+
+	d03 Pointer
+		void 	*superPtr 
+			// the void pointer is a pointer to anything
+			// it just holds the address of what it points to
+
+	More Pointer Notes!!
+		when you pass a pointer into a parameter like
+		ft_putchar(*ptr)
+			you are telling the function that you are passing in a pointer
+		if you pass
+
+
+functions
+	strtol( string, &p, base {usually 10} )
+		converts string to int
+		&p is set to the first value that isn't a number (could put anything there)
+		http://man7.org/linux/man-pages/man3/strtol.3.html
+
+d04 Recursion
+	recursive function needs a stopping condition
+	recusion puts a new version of the function at the top of the stack
+	after the stopping condition is met the program starts going down the stack through all the functions that were called towards the 
+	first call of the function
+		in this process any code in the function that is after the recursive function call will then be executed for each of the functions in the stack.
+
+
+
+
+Questions
+	difference between inverted commas and quotation marks
+
+Links
+	writing to file examples
+		http://www.dirac.org/linux/programming/tutorials/files_in_C/
+	
+	what's the difference between instantiating a function with () or (void)
+
+	do you always prototype a function with (args1, args2), or (void)
+
+
+
+
+
+

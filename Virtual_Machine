@@ -1,0 +1,10 @@
+Virtual Machine
+
+> use this setting to allow the virtual machine to accept ssh
+	settings > network > attached to host only
+	> umm, you could also make the machine have a NAT connection to connect to the internet. Not too sure about this but def something you'll need configure
+
+> VMware:
+	> drag disk image into splash window
+
+

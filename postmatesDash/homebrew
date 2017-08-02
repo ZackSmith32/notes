@@ -1,0 +1,14 @@
+Homebrew
+
+installed in : ~/goinfre/homebrew
+	> when installing set $PATH to have a file path to homebrew/bin
+		> do this by adding a command to your .zshrc, .bashprofile, or whatever
+			file is loaded by the shell that you are using.
+
+commands
+	> brew update: updates home brew
+	> brew info PACKAGE_NAME : gives info on an intalled package
+
+mongodb: 
+	> to start mongo: brew services start mongodb
+

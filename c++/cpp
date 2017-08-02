@@ -1,0 +1,219 @@
+plain text
+cpp
+
+namespace
+	> a sub scope
+	> aliasing
+		> new name space is equivalient to another namespace
+		> namespace foo = bar;
+	> scope resolution operator : "::"
+		> <namespace>::<variable/function>
+	> std::<item>
+		> std is used to access the 
+
+stdio stream
+	> magical objects : fetch or write data to stdin or stdout
+		> include <iostream>
+		> cin
+		> cout
+		> std::cout << "Hello World !" << sdtd::endl;
+			> endl : carrige return
+			> print hello world followed by carrige return
+		> std::cin >> buff;
+			> fetch input from stdin
+
+class
+	> prototyped in header
+	> defined in a cpp file
+	> .hpp
+		> name.class.cpp
+	> constructors
+		> no return, do not need to put a return type
+		> implicitly called when innitialized
+		> use the constructor to innitialize variables
+	> destructors
+		> prefixed with "~"
+		> no return val
+		> implicitly called when function is over
+	> this
+		> pointer on current instance
+	> innitialization
+		> automatically calls the constructor
+		> see below for initialization syntax
+	> 
+
+
+> when you are done executing a funciton all local variables are destroyed
+
+initialization lists
+	> <class name>::<constructor>(arg1, arg2, arg3) : a1(arg1), a2(arg2), a3(arg3)
+		> where args are passed in on declaration
+		> init. lists set member variables
+		> eliminate the need to use "this" in constructor list
+	> call
+		<class> <instance name>(arg1, arg2, arg3)
+
+const
+	> use const whenever possible, will make your code safer
+	> int const pi;
+	> const between function and starting bracket
+		> function will not alter the current instance
+		> i.e. def can't use "this"
+	> need to have inline innialization on the constructor function
+static
+	> see non-member attributes below
+
+public private
+	> public : available everywhere
+	> private: only accessible from member functions
+
+non member attributes
+	> class functions = non-member attributes
+	> static
+		> how you declare class functions (non-member)
+		> you cannot use this to access class functions
+			> have to use Class:variable notation
+
+=====================================================================
+d01 : memory allocation, references, pointers to members, file streams
+
+new & delete
+	> when creating a pointer to an object use "new"
+		> this will allocate for the object
+		> when you are done using it, call delte <obj name> to free that memory
+	> if you don't use "new", then you cannot "delete" it
+		> in this case the object will be freed when the program exits
+	> new for an array of objects
+		> <Class>* <arr name> = new <Class>[n]
+		> delte [] <arr name>
+			> deallocates all the objects.  Brackets are empty
+		> with this method, the object cannot take constructor variables
+
+references
+	> alias for an existing variable
+	> a pointer that is constant, always dereferenced, and never void
+	reference
+		> int& ballsRef = numBalls;
+	> when you create a ref it has to = something
+		> you cannot create an uninitialized ref because refs can't point to nothing
+	
+	> Pass in by reference through a pointer:
+		> function call:
+			a = func_ptr(&var);
+		> Prototype:
+			int	func_ptr(char *var);
+
+	> Pass in by reference through a reference:
+		> function call:
+			a = func_ref(var);
+		> Prototype:
+			int	func_ref(char &var);
+
+	> Pass in by copy:
+		> function call:
+			a = func_cpy(var);
+		> Prototype:
+			int	func_cpy(char var);
+
+file streams
+	> std::ifstream ifs("numbers");
+		> input file stream
+			> numbers as a parameter
+			> streams in info as numbers
+	> std::ofstream
+		> output file stream
+	> std::istringstream
+	> std::ostringstream
+
+types of object declarations
+	> Zombie*	instance
+		> pointer
+		> can be deleted
+	> Zombie&	instance = Zombie(arg1, arg2)
+		> reference
+	> Zombie	instance(arg1, arg2)
+		> not a pointer
+	> Zombie	instance = Zombie(arg1, arg2)
+		> not a pointer
+	> Zombie	instance = new Zombie(arg1, arg2)
+		> creates a pointer
+	> Zombie*	instance = new Zombie[n]
+		> creates an array of objects
+
+
+sub libraries of std
+	> std::ostream : output stream
+	> std::sstream : string stream
+	> std::istream : in stream
+
+
+
+Gotchas:
+	> make sure all files are cpp files
+		> make sure you're coding in the right file
+	> for Class.cpp
+		> invalid use of 'this' outside of a non-static member function
+		> all fucntions need to be Class::memberFucntino
+
+
+Questions:
+	> why do you need ot pass in an object to overriding "<<"
+	> ostream sstream etc. what's the difference?
+	> what does "throw" actually do?
+	> should we be including libraries in the c file and the header file?
+	> why can't you put the const after &
+		> says can make a referenct const
+	> why does << need to return a ref
+
+
+
+non virtual:
+attack();
+
+virtual:
+high_five();
+
+Warrior				e1;
+Ninja				e3;
+BaseCharacter		e2;
+
+e1.attack //Warriror atack
+e2.attack //Base Character attack
+
+BaseCharacter *pointer_array[2];
+
+pointer_array[0] = new Warrior;
+pointer_array[1] = new Ninja;
+
+pointer_array[0]->attack; //Base character attack
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

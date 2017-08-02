@@ -1,0 +1,36 @@
+
+
+
+char	*ptr; // ptr has a location
+char	c;
+
+c = 'c';
+
+
+// independent scenarios
+
+{
+ptr = &c; 
+	>> ptr points at c which is a local variable (i.e. not permanent!!)
+	>> memory is in the stack
+}
+
+{
+ptr = (char*)malloc(sizeof(char));
+	>> ptr now points at a specific section of memory in the heap
+	>> this memory is reserved until it is freed.  or the program finishes running
+	>> there is not value to the memory (*ptr) but you can now put something in there
+ptr[1] = c;
+	>> so you allocated the memory, and ptr points at it.
+	>> this line says put c in that memory
+	>> it does NOT say, ptr[1] points at c
+}
+
+{
+*ptr = 'c';
+	>> if this is your first line, the compiler will warn that ptr is not initiated
+	>> this is because you haven't yet set an address for ptr to point at
+	>> this says the value where ptr points is c... only prob is that ptr don't point no where yet!
+}
+
+** it's important to read pointers in order and make sure that each pointer points to something.

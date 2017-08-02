@@ -1,0 +1,159 @@
+Miscelaneous C
+
+Where the subjects are on the computers:
+	> /nfs/intrav2cdn/pdf/pdf
+
+EOF: https://latedev.wordpress.com/2012/12/04/all-about-eof/
+	> notes resulting from get next line project
+	> there is not a special charcter denoting the end of file
+	> OS's know how many bites are in a file
+
+Variables
+	> Automatic (local variables): stack memory
+		> memory allocated at run time
+	> Objects: dynamically allocated heap memory
+		> memory allocated at run time
+	> Static: stack memory allocated at compile time
+		> initailized once no matter how many times the fucntion is called
+		> it's value is retained through many calls to the function
+		> could be used as a count variable
+	> when a static variable is passed to another function, a copy is actually passed.
+
+Open / Read
+	> read(int fd, void *buf, size_t bytes)
+		> fd
+			> fd is the file descriptor.  It is returned by open.  Passing
+				it to read will tell read what file to look at.
+			> fd is usually 0, 1, 2 for stdin, stdout, and stderr
+				> 0: stdin = keyboard
+				> 1: stdout = screen
+				> 2: stderr = your screen
+			> fd can be outside of that range though if there is a need for several
+				simultaneous fd's.  For instance reading from multiple files
+				without closing them.
+		> read returns the number of bytes it just read.  Hence this number will not
+			exceed the size_t bytes parameter
+			> it returns 0 if it is at the end of file
+			> returns -1 if there is an error
+		> read when called successively on the same file descriptor will resume
+			reading where it left off.  Otherwise known as the file offset.
+	> open (path, oflag, ....)
+		> path
+			> file path
+			>
+		> oflag
+			> O_RDONLY
+			> O_WRONLY
+			> O_RDWR
+			> etc... (read man)
+		> returns file descriptor
+			> -1 on error
+				> sets errno
+
+Unicode / UTF8
+	> Unicode is a character set
+		> it allows a much greater number of characters to be stored
+		> unicode usually uses 2 bytes for each character but can use more.
+	> UTF-8 : system for storing unicode characters
+		> for characters up to 127, only one byte is used
+		> for characters above 127 2 bytes are used
+		> this goes up to 6 bytes
+		HOW IT WORKS
+		> the first byte of a character starts out with 1's for the number of bytes it takes for the entire number.  The number of bytes is followed by a 0
+			> if it is a singly byte character 0xxxxxxx
+			> 2 byte character 110xxxxx 10xxxxxx
+			> 3 byte character 1110xxxx 10xxxxxx 10xxxxxxx
+			> and so on
+	> for print f:
+		> (ls conversion) data comes in as a w_char, aka wide char, aka 4 bytes
+		> translate data into utf-8
+			> first identify how many bytes you will need for utf-8 representation
+				> you this by finding the max number of chars a byte can represent in utf-8 (note the numner of characters represented by the first byte changes depending on how many total bytes you need in the entire string.  This is because the first byte indicates how many bytes are in the string, so if it indicates there are 4 bytes necessary for the character string it needs to sacrafice 4 fo its bytes.)
+			> use bit shifting to
+
+
+Void assignments?
+
+
+Compiling
+	> compilation can invlove up to 4 steps
+		> preprocessing, compilation proper, assembly and linking
+		> first 3 apply to an individual source file
+		> last step produces the object file
+			> combines all object files into an executable
+	> -o filename
+		> place output of compiling in a file (filename)
+		> can be any type of output
+		> only 1 output file can be specified.  We use it when producting
+			an executable (aka binary)
+
+Function pointers
+	>
+
+
+Casting
+	> on these macs long and long long are the same number of bytes (8)
+	> when passing a data type to a function that requires a different data type, make sure to cast it to that data type, prior to passing it.
+
+Variable arguments (variadic) : va_list va_arg
+	> initialize like: int	main(arg1, ...)
+	> there must be a first arg
+	> the variable args are put into a linked list implicitly and are accessible through the <stdarg.h> lib as follows
+		> va_start(<name of list>, <name of arg1>)
+		> va_arg(<name of list>, data type to be grabbed)
+			> the data type to be grabbed specifies the size of the data to be grabbed
+			> you will get the next variable in line no matter what
+			> if you specify the wrong type, that results in undefined behavior
+		> va_end(<name of list>)
+	> Multiple traversals of the list, each bracketed by va_start() and va_end() are possible.
+	> you need to know the number of arguments
+
+
+Bus error vs. Segmentation Fault
+
+
+	What is a "bus error"?
+
+	    A Bus Error occurs when you try to dereference a pointer to a memory
+	    location that is not aligned correctly.
+
+	    For example, on a 32-bit machine, such as strauss, integers must
+	    be aligned on addresses that are multiples of 4.  If you dereference
+	    a pointer that is not evenly divsible by 4, you get a bus error.
+
+	    The cause of a bus error is usually an attempt to dereference a pointer
+	    that has not been initialized properly, and therefore contains
+	    arbitrary bits (junk) that are not a multiple of 4.
+
+	What is a "segmentation fault"?
+
+		The operating system and the hardware work together to divide
+		up all memory into "segments".
+
+		Some segments contain your variables.  You have read/write access to
+		these segments.
+
+		Some segments contain constants, or executable code.  You typically
+		have read-only access to these segments.
+
+		Some segments are forbidden for a normal user to access. These might
+		contain operating system data, or data allocated to other users.
+
+
+		If you dereference a pointer, and it points (by accident, typically)
+		to a segment that you don't have any access to, you get a segfault.
+
+		Or, if you try to write into a segment where you have read only
+		access, that will also produce a segfault.
+
+Setting Locale
+	> A C program inherits its locale environment variables when it starts up. This happens automatically. However, these variables do not automatically control the locale used by the library functions, because ISO C says that all programs start by default in the standard ‘C’ locale. To use the locales specified by the environment, you must call setlocale. Call it as follows:
+	> you need to set locale when using printf from stdlib to print wide characters use the commpan bellow
+	> #include <locale.h>
+	> setlocale (LC_ALL, "");
+
+Detecting leaks: see "terminal notes"
+
+Pipes:
+	q liu on youtube: https://www.youtube.com/watch?v=FcUlMsVX7aE&list=PLPXsMt57rLtjNzxZBDg9xJB7KT83WStBO&index=4
+	>

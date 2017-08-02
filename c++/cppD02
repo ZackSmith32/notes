@@ -1,0 +1,32 @@
+Polymorphism, Operators Overload and Canonical Classes
+
+Adhoc Polymorphism : Function Overloading
+	> many functions with same name but accepting different parameters
+	> 1 function name
+		> different parameters for every overload
+
+Operator Overload
+	> when you take an operator in c++ and define it's use for your class
+	> prefix notation aka functional notation
+		> +(1, 1) == 1 + 1
+	> in a class
+		> Class operator-(Class const & name)
+		> Class& operator+(Class const & name)
+
+	> uses
+		> a = b = c = d
+			> this works because the operator functions return instances of the object
+
+Cannonical Form
+	> default constructor
+	> copy constructor
+		> takes as parameter an instance of the object to make a copy
+	> copy assignment operator
+	> destructor
+
+Friend functions
+	> non-member functions
+		> i think this means they don't get "this" passed to them
+	> defined in the class
+	> have access to all pub and private variables
+

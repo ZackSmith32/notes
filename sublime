@@ -1,0 +1,23 @@
+Sublime
+
+> Package control
+	> install this to allow your sublime to access a bunch 
+		of useful packages on the internet
+	> drag it into the folder that opens when you open 
+		sublime text >> preferences >> browse packages
+
+> color sublime has a package that you can install to change
+	themes
+	> packages constrol > search for install package > search for color sublime
+	> bittersweet
+
+> clang complete: package that tells you when your code does not
+	pass the debuggin checks.  It updates every time that you
+	save.
+	> package manager > install package > clang-complete
+	https://packagecontrol.io/packages/Clang-Complete
+
+> sublime console: 
+	open: ctrl + `
+
+> header: search sublime 42 header

@@ -1,0 +1,102 @@
+Github
+
+> git remote add <name> url
+	> adds a remote to a directory that is already a cloned directory
+
+> pushing to two remotes from one local repository
+	> you can use git push <name of remot> <branch name>
+		> that's eash
+	> still figuring out how to differentiate which files get pushed to one remote vs. another
+		> think one way to do it might be to use --meirror with git push
+		> stack overflow (second answer talks about it)
+			>http://stackoverflow.com/questions/5181845/git-push-existing-repo-to-a-new-and-different-remote-repo-server
+
+> git fetch <remote name>
+	> allows you to get all the information from the remote on your local, that you don't already have.
+	> only downloads to local repository
+
+> git pull
+	>  fetches data from the server you originally cloned from and automatically tries to merge it into the code you’re currently working on.
+
+> git remote : shows all remotes
+	> -v shows all the remotes associated with a directory
+
+> git add
+	> -u :automatically stages tracked files
+		> this is good for adding files that are "deleted" and in red to the commit
+		> they will then be removed from github
+	> git add libft/\*  :adds every file in the directory
+
+> git rm <file name>
+	> this also removes the file from you loacl directory!!!
+	> removes a tracked file from your github repository
+	> might ask you to throw on a -f which will force the action to happen
+	> if you want to remove something from a remote repository, clone it down to a seperate local repository, git rm it there then push it back up to the cloud.
+
+> changing the url your origin pushes to
+	> git remote set-url origin <url>
+	> git push --set-upstream origin master
+
+> git branching
+	> git branch <name of new branch>
+	> git checkout <name>
+	> make changes to files
+	> add => commit the changes to the branch
+	> git checkout master
+	> git merge <branch name>
+	> git branch -D <name> **delete branch**
+
+> creating a new repository (if you don't just clone, which is easier)
+	> git init
+	> git remote add <name could be origin or other>
+	> git add (add a file, you have to)
+	> git commit -m "the usual"
+	> git push <repo name> <branch name>
+
+> merging
+	> commit the changes that you want to push to the remote
+	> git pull the remote
+	> fix conflicts by opening each file and resolving the afflicted areas
+	> git add all files that you had to resolve conflicts in
+	> git commit again
+	> git push...
+
+> getting files not to show up when you type git status
+	> edit the .git/info/exclude file
+
+> git log : shows previous commits
+
+> git checkout : allows you to checout an old commit put the commit number after the command
+	> add -b <branch name> to checkout old commit into a new branch
+	> git checkout -- <file>: to discard changes in working director
+		> if you made changes but have not "add"ed aka staged them
+		> may work even if they are staged..
+
+> git reset --hard HEAD
+	> HEAD = last commit
+
+> .gitignore
+	> create a file called .gitignore and put a list of all the files you don't want git to track.
+
+> man giteveryday
+
+> git submodules
+	> this is what happens when you clone a git repository into another git repository
+		> git by default doesn't commit the submodule files to the parent repo.  But it does provide a link the the submodule
+		> so when you are cloaning there are a couple things you can do to get the submodule files in your directory
+			> git clone --recursive <git repo>
+			> there are a couple other techniques outlined on the git submodules page
+		> when you are in the root of the submodule dir, you can git pull to update the submodule
+		> I'm fairly certain you can also push from that submodule if that's how you like to roll
+	> if you want to avoid this
+		> remove .git dirs from your subdir
+		> then you have to remove the ref's to your subdirs from the online cache of your files.  see "git rm --cached" bellow
+		> then when you check git status you should be able to re-add the directories (not as subdirectories) regularly.  Do this, then you should be good.
+			> alternatively, git update-index --assume-unchanged <file>
+
+> git rm --cached <file name>
+	> this removes the file from being tracked
+	> apparently an alternatie is update-index --assume-unchanged <file> , but I'm not going to look into this right now.
+
+> git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch <file/dir>' HEAD
+	> This will delete everything in the history of that file.

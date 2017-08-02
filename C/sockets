@@ -1,0 +1,72 @@
+
+
+
+> sockets
+	> how programs can communicate with one another
+	> when you create a socket:
+		> adress domain
+		> socket type
+	> for 2 programs to communicate with each other they need to have the same
+		socket type
+	> wheather internally on the computer or over a network a socket is
+		necessary
+		> internet domain consists of:
+			> IP adress / internet address: 32 bit
+			> each socket needs a port number on the host (the IP)
+			> lower port numbers reserbved for Unix standard services
+				> ssh is 21
+
+
+		> unix domain:
+			> processes that share the same file system communicate this way
+			> character string
+				> basically an entry in the file system
+
+	>http://www.cs.rpi.edu/~moorthy/Courses/os98/Pgms/socket.html
+
+> types of sockets
+	> stream soccets
+		> continuous stream of characters
+		> communications protocol: TCP (tranmission control protocol)
+	> datagram soccets
+		> read entire message at onceu : UDP (Unix Datagram Protocol)
+
+
+> Mac: Computer name and adress
+	> computer name:
+	> local hostname:
+		> this is the name of your computer, with space replaced with "-" and
+			.local added to the end.
+		> when pinging a server that is on the same machine, you can use
+			localhost as the port name
+	> newtork address:
+		> provided by the DNS your computer uses
+		> found in sharing when you click on one of the services
+
+	> apple menu > system preferences > sharing
+
+> C specific server functions
+	> getaddrinfo()
+		> The getaddrinfo() function is used to get a list of IP addresses and port numbers for host hostname and service servname.  It is a replacement for and provides more flexibility than the gethostbyname(3)
+		> see man getaddrinfo()
+		> see below sockaddr_in
+	> accept(int socket, struct sockaddr *address, socklen_t address_len)
+		> accept() extracts the first connection request on the queue of pending connections, creates a new socket with the same properties of socket, and allocates a new file descriptor for the socket.
+		> blocks caller until connection is present
+		> socket: is a previously created socket that is listening for connections
+		> address: gets filled with the address of the connecting client
+	> sockaddr_in
+		> structure defined in <netinet/in.h> that holds all of the necessary connection info for a client or server.
+		> see: https://www.gta.ufrj.br/ensino/eel878/sockets/sockaddr_inman.html
+		>
+
+> Networking
+	> http request
+		> type: GET, POST, DELETE, etc.
+		> page: /index, /r/videos, etc.
+		> return: you need to put a "\n\r" at the end of the line
+			> alternatively using telnet you can just hit enter
+		> host:
+
+
+// gcc server_test.c -o server -I includes -L. ./lib/libftprintf.a

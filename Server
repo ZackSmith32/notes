@@ -1,0 +1,30 @@
+Server
+
+> virtual env
+	> workon <vitualenv name> : work in virtual env
+	> virtualenvls : shows all virtual envs
+
+> python stuff?
+	> manage.py
+		runserver : runs server
+
+> NGINX
+	> configure fire wall (ufw)
+		> sudo ufw allow <portno>/tcp
+	> sudo ufw status : shows which ports are open
+	> sudo ufw enable : turn on server
+	> sudo ufw disable: turns off server
+		> note: you need to restart the server when you want firewall changes to take effect
+
+
+		186
+	medical coverage lost
+		1 626 569 1399
+		> www.dpssbenefit.lacounty.gov
+		> what do I need to do to get registered?
+			> medical recertification
+			> case is terminated....
+			> apply in Fremont?
+		> 
+
+			70

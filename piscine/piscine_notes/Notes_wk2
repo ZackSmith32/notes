@@ -1,0 +1,158 @@
+Week 2
+
+	char strings are an array of chars
+	they end with \0 (which is one char)
+
+d06 Libraries
+	> to create libraries you first need to compile the functions
+		you want to put in it
+		> gcc -c
+			> this creates an object in computer language (.o files)
+			> you need objects in order to make them into a library
+			> do this for all .c files you want in the library
+			> you do not need to include a header in this step
+			> even though you will probably have a header for 
+				> prototyping functions
+				> for including libraries
+	> Where to include your library in the compiling process???
+		> you can include it in the ar rc
+			> ar rc libname.a *.o header.h
+		> you can include it in the final gcc when you combine your main and library
+			> gcc main.c -L. -lname -I header.h
+		> as far as I can tell there isn't a difference between these two options.  My preference is to include it in the ar rc step because then it is bundled with the library.  Also makes it cleaner on the final step.
+	> ar rc libstr.a ft_putchar.o ft_putstr.o
+		> returns libstr.a : which has all of the listed .o functions included
+	> compile your main with a library
+		> gcc -L. main.c lstr.a 
+		> for some reason they shortened libstr.a to lstr.a prolly
+			cause all lib's start with lib, but doesn't seem like 
+			that would be too helpful to me...
+	> see Makefile in Libft for example of compiling a library
+
+d07 dynamic memory allocation
+	#define LEN 42 //this allocates 42 bytes of memory to LEN
+	malloc
+
+	what args can sizeof take?
+		yout can pass in a variable with stuff in it // returns sive of the entire variable, even if it is a string
+		you can pass in an empty variable // returns size of the type of the variable
+		or you can pass in a type // returns size of the type
+
+	does '\0' cost a bite?
+		yes
+
+	is the size of range ** the size of all the bytes inside of it?
+		or just the number of boxes?
+
+	dynamic memory allocation
+		./a.out & //run program in the background
+		top // shows the processes that are running and the memory they use
+		s = (char*)malloc(sizeof(src*) * size) // add +1 to the size for char arrays that end with '\0'
+		free(str) // free and the name of the variable will free the memory allocated for that variable
+
+d08 Preprocessing
+	#include <header.h>
+		you can specify the path for libraries
+		angle brackets specify that you are using the path for a file
+			you can also use quotes
+		cpp: preprocessor command.  Lets you see what's happening before compiling.
+			shows what is in the unistd library, based on what is included
+	when you include any file, not necessarily a .h you can read that file before compiling
+	#define aka macros
+		you define a word to mean something
+		#define TOTO int
+			this means that anytime you write TOTO the computer replaces it with int
+		you can use parens and use parameters
+			#define TOTO(x) int x;
+			then: TOTO(a) in code is compiled as int a
+		#define TOTO(x) #x;
+			wherever TOTO(x) is it will be read as whatever is in it's parens
+	#ifdef, #ifndef ...
+		#ifdef TOTO : if TOTO is defined whatever is between #ifdef and #endif will be defined in the file
+		#ifndef : if TOTO has not been defined then ...
+		the define happens above the ifdef like so #define
+		use these to protect your files.h
+	multiple #includes
+		if you include a file, and that file includes another file, there is potential to create an infinite loop, protect against this with #ifdef
+	typedef : defining a type
+		typedef int* int_p
+			this will cast anything that is put across from int_p as a string
+
+		!!! need to rewatch
+	struct : data structures
+		struct s_point
+		{
+			int x;
+			int y;
+		};
+		int main(void)
+		{
+			struct s_point a;
+			struct s_point b;
+
+			a.x = 10
+			a.y = 42
+			b = a; // b is a copy of a
+			// if we modify a, b will not be affected
+		}
+		in general use pointers to structures, to aviod really heavy processes
+
+		typedef struct s_point
+		struct s_point
+		{
+			int x;
+			int y;
+		}		t_point;
+			// now in the main you can just write
+			// t_point a;, and not have to type out struct
+		t_point *ptr; // ptr is a pointer to s_point struct
+		ptr = &a; // prt points to s_point a
+		(*ptr).x // allows you to access the x value of the struct
+		// you can also set the value of a.x this way too
+		ptr->x // another way to access the x element of the 
+				//struct you are pointing at
+	Data Structures : Enum
+		increments the numbers in the enum by 1
+		enum e_list
+		{
+			val1, 
+			val2,
+			val3
+		}; // semicolon bc it is something that happens during compiling
+
+		int main(void)
+		{
+			enum e_list a;
+			
+			a = val1;
+		}
+
+		## side note: if a function returns something you can type echo $? 
+		##in the command line to print the return value of the function.
+
+		union
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

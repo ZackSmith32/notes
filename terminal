@@ -1,0 +1,154 @@
+see Linux_server/SSH for sudo stuff
+
+links
+	> sym link
+		> sym link is a file path to a file or directory
+		> create one by typing `ln -s path name` in command line
+		> word on the street is that it's typical to do a relative path and not an absolute path .
+	> ln -s <path> <name>
+		> if name is excluded it just uses the name of the pointed to file
+
+setting colors
+	> Ansi escape sequences
+		> you need to issue a command to the computer, which will tell the computer to print to standard output in a certain color, when you are done you should reset the stdout.
+		> escape sequence: ANSI escape sequence is a sequence of ASCII characters, the first two of which are the ASCII "Escape" character 27 (hex code: x1B) and the left-bracket character " [ "
+		> write(0, "\x1b[31m", 6);
+			> the 0 in write, sends the code to the stdin
+			> the computer then adjusts the stdout to red, until the reset command is called
+			> you can see '1b[' escape sequence mentioned above
+			> there is also the '\x' indicates hex value
+			> the 31m is the formatting code
+				> 31 is red
+				> I think m is just the end of the format
+		> http://ascii-table.com/ansi-escape-sequences.php
+
+Unix commands
+	> grep <search expression> <file to look
+		> searches for the string that you specify, then returns all the lines that contain that string
+		> grep "day01"
+			>
+		> -e : pattern
+			> use regex
+		> grep "xxxx\|yyyyy"
+			> grab all lines that have xxxx or yyyy in them
+			> good for use with Top, when you want to grab the column headers
+
+	> sed :
+		> find and replace
+	> find :
+		> find returns files that match the specified criteria
+		> syntax: find <dir> <options> <regex>
+		> find will automatically search in sub-dirs
+		> put the regex in quotes, thought that went without saying, but apparently that is something that I would forget.
+		> options:
+			> -name : searches for file names
+
+	> leaks:
+		> run your executable
+		> open new terminal
+		> run leaks <executable name>
+		> man leaks
+
+	> top
+		> shows the processes that are running
+		> run with grep to select a specific process from the list and examine it.
+			> top | grep "my_prog"
+
+	> open
+		> you can specify which application you want to open a file with by placing the -a flag after open and specifying which application you want to open with
+			> open -a "Sublime Text" xxxx.c
+
+	> at
+		> allows you ro schedule a task to run at a certain time
+		> atq : shows list of scheduled jobs
+		> at -c 43 : shows what job 43 is going to do
+		> atrm 42 : removes scheduled job 42
+
+	> cron
+		> allows you to schedule a recurring task
+
+	> kill | killall
+		> sends
+		> kill : kills processes by procid
+		> killall : kills precesses by procname
+		> kill -9 <procid>
+			> sends a sigkill signal without -9 it sends 
+
+	> &
+		> put this after a binary or terminal command to make it run in the background, and allow your terminal to do other things
+		> basically it forks the process
+
+	> less
+		> lets you look through some input.  cat pipe to it from cat
+		> arrow key scroll up and down, whereas cat doesn't have that feature
+
+	> tar
+		> unpacks zipped files (.tar)
+		> tar -xvf file.x : unpacks file in current dir
+		> tar -C ~/another/dir -xvf file_to_unpack.x : unpacks file in another location
+
+	> head [options] [file]
+		> shows the first 10 lines of a file
+		> -n 55 :show first 55 lines
+		> -c 75 : show first 75 bytes
+
+	> mkdir
+		> -p : if there are any directories in the specified path that don't exist they will be created.
+
+	> ip addr : gives ip address
+
+	> which <executable naem
+
+Pipe
+	> stdout of program1, becomes stdin of program2
+	> you can pipe in c programs too
+
+
+echo $HOST : returns the location of lab computers
+
+Where the subjects are located:
+	/nfs/intrav2cdn/pdf/pdf/
+
+Notes on terminal
+
+How to change terminal settings
+
+Saving settings
+
+	> in the preferences on the general tab there is an option to load settings from a file, and to copy to that file.  
+		> you could for instance save that file in a drop box directory, and load that whenever you go to a new computer.
+	> to reload those setting it should come from the ".plist" file
+		> I had to put this file by itself in a directory for iterm to find it
+		> have to quit shepp applications and restart
+
+
+zsh
+	> zsh is a shell for the operating system, similar to bash
+	> basically you change settings in the files below.
+	> the computer loads each of the files below at different time
+		> ex login, new window etc.  which determines what you put in each
+
+	~/.zshenv
+		> this file is always sourced (always loaded)
+		> contains exported variables that should be available to other programs
+		> you can use alias expansion to set strings to do things
+			alias ls="ls -GFh" : this makes your ls command display the results with colors
+		> PROMPT='put stuff here'
+			> use this to customize prompt, you'll need to look up all the options available.
+	~/.zshrc
+		 > Used for setting interactive shell configuration and executing commands, will be sourced when starting as a interactive shell.
+
+	zsh plugins:
+		> programs that expand the functionality of zsh
+		> I'm putting them in the home dir, under zsh_plugins
+		> can be started by cloaning into the folder
+			> then in .zshenv: 
+				> "source <plugin file path>""
+			> to activate your changes to zshenv, do source .zshenv on the command line
+		> almost on top
+			> clears after every command and keeps your terminal prompt on the top
+			> can be toggled on and off:
+				> almostontop off
+		> not a zsh plugin I don't think... but brew install tree
+			> prints out a nice looking file tree.
+			> have to set up the alias

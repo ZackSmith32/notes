@@ -1,0 +1,56 @@
+General Programming
+
+Interpreted vs. Compiled language
+	> interpreted
+		> execute instructions directly without previously copling a program into machine language
+		> interpreter translates code into a sequence of already compiled subroutines 
+		> Java, python, ruby
+
+Funtional programming
+
+Object Oriented programming
+
+Kernel
+
+lambda functions: heard about them at amazon echo talk
+
+digital ocean
+	> cloud computing
+	> provide servers
+
+Languages
+	> clojure
+	> lisp
+	> go
+	> rust : a low level language invented by mozilla to take the dangerous parts of memory management out of c, and keeping the speed of a low level language.
+	> golang
+	> what is "ruby" on rails?
+
+Dynamic Programming 
+
+> polymorphism
+	> Polymorphism is the ability (in programming) to present the same interface for differing underlying forms (data types).
+	> closely related to object oriented programming, classes and inheritence
+	> ex: a float multiplied by an integer
+
+> caching
+	> saving frequently used information in a temporary store
+	> browser saves the information for recently viewed web pages so that when you visit them again it can load them faster.
+	> some methods for revmoving items from cache when it is full
+		> LFU : least frequently used
+		> LRU : Least Reently Used
+		> MRU : Most Recently Used
+
+> SQL vs NoSQL
+	> NoSql : document based storage
+		> no strict rules for storing data
+		> simpler architecture
+	> SQL
+		> hard data requirements, reduces data inconsistency
+		> data integrity
+			> can issue put in rules to make sure that an entry in one column must correspond to an entry in another column
+
+	> Which is faster?
+		> depends on how you design your data stores.  But NoSQL is simpler, and does not require joins
+
+

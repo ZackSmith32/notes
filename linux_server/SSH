@@ -1,0 +1,36 @@
+
+SSH
+
+> ip addr : gives ip address
+
+> on the computer you want to connect to you need to make an ssh server by installing openssh-server, or sshd
+	> apt-get install openssh-server openssh-client
+	> apt-get install sshd, I think this works.  Haven't tested it yet though
+
+> ssh username@ip-address
+	> this is how you connect to a remote computer
+
+> scp <source> <destination>
+	> secure copy
+		> allows you to copy a file from, or to a remote computer
+	> /path/to/filels username@ip_address:/path/to/file
+		> make sure the remote path you specify, is a path that the user you are logging in as has access to.
+	> the machine that you are going to connect to needs to be set up as an ssh server
+		> apt-get install sshd
+
+> RSA key
+	> ssh-keygen : generates RSA public/private key pair
+		> it will ask you where to save the keys
+		> public key is then shared with remote machine
+	> ~/.ssh/id_rsa.pub : where the public key is located
+	> I put my public RSA key in the home directory for both root and zsmith so that I can log in as either
+
+> how to enable or disable passwords:
+	> use vim to open /etc/ssh/sshd_config
+		> set following line to yes: ChallengeResponseAuthentication
+		> restart ssh: sudo service sshd restart
+	> referrence : set up RSA
+		> https://www.digitalocean.com/community/tutorials/how-to-configure-ssh-key-based-authentication-on-a-freebsd-server
+
+
+what is digital ocean?
