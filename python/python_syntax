@@ -116,3 +116,5 @@ Python Syntax
 
 	> attributes
 		> private : _private_name
+
+list comprehension

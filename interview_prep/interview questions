@@ -1,0 +1,13 @@
+rpn calc
+
+how would you find the k most frequent word from a list of words
+
+trees
+
+arrays
+
+bigO
+
+arr = []
+for i in range(0, 256):
+	arr.append([]);
