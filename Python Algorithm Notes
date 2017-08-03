@@ -1,0 +1,51 @@
+Python Algorithm Notes
+
+Set : used for testing membership and removing duplicates
+	> x.union(y) : x | y
+	> x.intersection(y) : x & y
+	> x.difference(y) : -
+	> x.symetric_difference(y) : x ^ y
+	
+	> can be converted to a list : list(set(y))
+	> can be ordered and implicitly turned into a list : sorted(set(x))
+	> creating a set
+		> myset = {1, 5, 56}
+		> myset = set([5, 67, 0, 22, 45, 5])
+
+input :
+	raw_input() : reads one line
+		> brings the input in as a string
+		
+		> useful fucntions with raw_input
+			> split()
+				> splits on delimiter in parens, default is white space
+			> strip()
+				> removes whitespace from beginning and end
+			> map(int, arr[])
+				> applies functino to all members of the provided data
+
+
+	input() : reads one line
+		> will try to guess what your input type is and evaluate it
+			> res = input()
+			>>>> 5 + 2
+			> res = 12
+
+
+from xyz import method
+	> from __future__ import division
+		> future is methods that are available in python 3
+		> in future "/" returns decimals (real value)
+			> if you want integer divis you need to use "//"
+		
+
+math stuff
+	> ** : power
+	> ^  : bitwise xor
+	> // : division and disgard remainder
+
+arrays
+	> arr.append(xxx)
+
+scope
+	> array outside of function can get changed in function and it will be reflected outside of function
