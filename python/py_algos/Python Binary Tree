@@ -1,0 +1,5 @@
+Python Binary Tree
+
+searching : O(logn)
+removing : O(n)
+inserting : O(n)

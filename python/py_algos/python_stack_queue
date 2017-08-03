@@ -1,0 +1,32 @@
+
+
+stack: LIFO structure
+	> push : add to top of stack
+	> pop : remove top element from stack
+	> peek : look at top element
+
+	> applications
+		> graphs
+			> depth first search
+		> Euler-cycles
+		> finding strongly connected components in a graph
+
+
+queue: FIFO structure
+	> enqueue : insert an element
+	> dequeue : remove earliest inserted element
+	> peek
+
+	> implemented with dynamic array or linked list
+	> good for input output buffers, where input/output are not moving at the same speed
+
+	priority queue?
+
+
+data structure vs abstract data type
+	> data structure
+		> arrays
+		> linked lists
+	> abstract data types
+		> stacks
+		> queues
