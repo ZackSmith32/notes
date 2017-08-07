@@ -118,3 +118,5 @@ Python Syntax
 		> private : _private_name
 
 list comprehension
+
+does python pass copies or references?

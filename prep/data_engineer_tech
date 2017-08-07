@@ -1,0 +1,54 @@
+
+ETL : Extract Transform Load
+Amazon
+	> Databases
+		> Redshift : datawarehouse (see databases)
+			> structured data
+			> very fast
+
+	> Streams
+		> Kinesis
+			> streams realtime data
+				> click streams
+				> logs
+			> allows you to do operations and monitor data streams in real time
+
+
+Hadoop (Apache) aka HDFS
+	> HDFS : Hadoop Distributed File System
+		> highly fault tolerant (hence Distributed)
+		> master/slave architecture
+	
+	> open source
+	> good for storing lots of data (many petabytes)
+		> can store all types of data
+		> runs on comodity hardware
+	> is redundant
+	> no data size limits
+	> need to use separate software to effectively query
+		> spark
+		> mapreduce : the OG software, but supposedly inferior to spark
+		> Pig
+
+
+Databases
+	> cassandra (Apache)
+		> NoSQL database
+
+	> redshift
+		> amazon database
+		> has data limit around 1.5 petabytes
+		> faster than hadoop
+		> uses Postgres query syntax
+		> requires you to use other amazon services to provide data such as S3 or Dynamo
+
+Analysis Engines
+	> spark : competitor to mapreduce
+		> easier to work with
+			> has API that works with many of the big name languages
+			> writing complex queries, do not have to do it iterively as with mapreduce
+
+	> mapreduce : oldschool
+
+
+

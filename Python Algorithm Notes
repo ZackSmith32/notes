@@ -46,6 +46,42 @@ math stuff
 
 arrays
 	> arr.append(xxx)
+	> built in functions
+		> max(arr)
+		> len(arr)
+		> type()
+	> methods
+		> arr.indx['xyz'] : returns index of 'xyz'
+
+	> arr.sort()
+		> sorts the list in place
+	> sorted(arr)
+		> returns a sorted copy of an array
+		> works on all itterables
+		> key : a way to add a funciton, OR select an sub-element of each element to sort on
+			> for both sort and sorted : 
+			> key=str.toLower()
+				> I think str is an arbitrary name used to represent the current element
+			> key=lambda rand_name: rand_name[1] 
+				> sorts based on the second ([1]) value of each element in the list
+	> when you set another variable = to an existing array, it is simply pointing to the same memory
+		> therefore when you update the first array, the variable that you set equal to that is also changed
+		> which is to say a = b does NOT create a copy
+	> y = list(x) : creates a copy of x
+
+
 
 scope
 	> array outside of function can get changed in function and it will be reflected outside of function
+
+
+
+
+
+
+
+
+
+
+
+
