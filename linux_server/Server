@@ -39,8 +39,27 @@ Server
 		> sudo ufw disable: turns off server
 			> note: you need to restart the server when you want firewall changes to take effect
 
+	> each site needs to have a server block (this is how you can host more than one site off the same server)
+		> /etc/nginx/sites-available/firstsite
+		> you need to create a sym link to this file in:
+			> /etc/nginx/sites-enabled/
+		> look at existing blocks and default block they should give you some ideas
+		> cannot have more than one default site
+
+		> server block (v simple setup for static content)
+			> root : where nginx will look for the content you want to serve
+			> index: I think this is the name of the file is should look for when there is a request for <domain name>/
+			> servername : nginx will look in the request header for host, then try to match it against the server_name field in each server block
+				> if it doesn't find a match it serves the default
+					> this will only happen if someone tries to visit the server using the ip address
+			> locaiont : not sure 
+
+		> check if the server block is correct
+			> sudo nginx -t 
+
 	> sudo systemctl start uwsgi
 	> sudo systemctl restart nginx
+
 
 > Complete setup summary
 	> startup script : start on boot
@@ -51,7 +70,6 @@ Server
 	> manual start
 		> to propogate changes to website, you need to restart uwsgi
 		> nginx :
-			> config : /etc/nginx/sites-available/pushswap42
 			> startup
 				> check config syntax : sudo nginx -t
 				> sudo systemctl restart nginx
@@ -79,3 +97,7 @@ Server
 		> shows driver information
 	> this tutorial
 		> https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-centos-7
+
+
+
+		

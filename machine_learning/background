@@ -1,0 +1,24 @@
+
+> supervised ML
+	> for training data you know what the correct answer is (i.e. this is an image of a cat)
+	> learn from labeled training data
+
+	> classification or regression models
+		> classification attempts to draw a line the separates two groups
+		> regression draws a line that best represents a set of data
+
+> cost function: tells us how well a line fits data
+	> low : better fit
+	> high : worse fit
+	> types
+		> mean squared error
+
+	> gradient descent : how to minimize the cost function
+
+> machine learning algorithms
+	> perceptron : neural networks
+	> logistic regression
+	> support vector machines:
+
+
+
