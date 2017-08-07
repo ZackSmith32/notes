@@ -1,0 +1,15 @@
+Interview Things to Remember
+
+protect against
+	> key not in dictionary
+	> divide by 0 : None input
+
+finish the problem, make sure it look exactly how they want it
+
+build tests, build tests as you go
+
+
+
+IOps input output per second
+what are the key metrics for a server
+sym link vs. hard link

@@ -1,0 +1,80 @@
+SQL
+
+SELECT [ALL | DISTINCT] column1[,column2] 
+
+FROM table1[,table2] 
+
+[WHERE "conditions"] 
+
+[GROUP BY "column-list"] 
+
+[HAVING "conditions] 
+
+[ORDER BY "column-list" [ASC | DESC] ] 
+
+
+
+> aggregate fucntions
+	> MIN(), MAX(), AVG(), SUM(), COUNT(),
+	> when used without a group by function, will return 1 row, whereby taking the function of all available rows
+		> can be limited by WHERE
+
+> having : operates on aggregates
+	> so if your result is showing the counts of something and you only want to return counts > x
+		> this is opposed the WHERE which opperates on the rows before they are aggregated
+
+> order by : example :
+	SELECT employee_id, dept, name, age, salary
+
+	FROM employee_info
+
+	WHERE dept = 'Sales'
+
+	ORDER BY salary, age DESC; (ASC)
+
+> IN / NOT IN
+	> WHERE lastname IN ('Hernandez', 'Jones', 'Roberts', 'Ruiz');
+
+> BETWEEN / NOT BETWEEN
+	> WHERE age BETWEEN 30 AND 40;
+
+> JOIN : example
+	SELECT employee_info.employeeid, employee_info.lastname, employee_sales.comission
+
+	FROM employee_info, employee_sales
+
+	WHERE employee_info.employeeid = employee_sales.employeeid;
+
+	> example 2:
+
+
+	SELECT customer_info.firstname, customer_info.lastname, purchases.item
+
+	FROM customer_info INNER JOIN purchases
+
+	ON customer_info.customer_number = purchases.customer_number;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

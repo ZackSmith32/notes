@@ -50,3 +50,10 @@ Question:
 	> import json
 	> dumps: takes python object and conv erts it to a string
 	> loads: takes a JSON sting and converts it to a pythong object
+
+> _
+	> CL tool : represents the result of the previous command
+	> in a program it mean ignore the value
+		> x, _, y = (1, 2, 3) # x = 1, y = 3 
+		> for _ in range(10):     
+    		do_something()
