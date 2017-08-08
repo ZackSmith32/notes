@@ -12,33 +12,6 @@ Set : used for testing membership and removing duplicates
 		> myset = {1, 5, 56}
 		> myset = set([5, 67, 0, 22, 45, 5])
 
-input :
-	raw_input() : reads one line
-		> brings the input in as a string
-		
-		> useful fucntions with raw_input
-			> split()
-				> splits on delimiter in parens, default is white space
-			> strip()
-				> removes whitespace from beginning and end
-			> map(int, arr[])
-				> applies functino to all members of the provided data
-
-
-	input() : reads one line
-		> will try to guess what your input type is and evaluate it
-			> res = input()
-			>>>> 5 + 2
-			> res = 12
-
-
-from xyz import method
-	> from __future__ import division
-		> future is methods that are available in python 3
-		> in future "/" returns decimals (real value)
-			> if you want integer divis you need to use "//"
-		
-
 math stuff
 	> ** : power
 	> ^  : bitwise xor
@@ -68,8 +41,6 @@ arrays
 		> therefore when you update the first array, the variable that you set equal to that is also changed
 		> which is to say a = b does NOT create a copy
 	> y = list(x) : creates a copy of x
-
-
 
 scope
 	> array outside of function can get changed in function and it will be reflected outside of function

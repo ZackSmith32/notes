@@ -1,16 +1,41 @@
 > for installing packages on 42 machines pip install <package> --user
 
-
-
 Question:
 	> are class attributes accessible through dot notation?
 		or do you have to use methods to return them/
 
+> from xyz import method
+	> import xyz  # to get the entire module
+	> from __future__ import division
+		> future is methods that are available in python 3
+		> in future "/" returns decimals (real value)
+			> if you want integer divis you need to use "//"
 
-> how to convert values to strings
-	> str() will convert vaules to strings that are human readable
-> int()
-	> convert string to int
+> input :
+	> raw_input() : reads one line
+		> brings the input in as a string
+		
+		> useful fucntions with raw_input
+			> split()
+				> splits on delimiter in parens, default is white space
+			> strip()
+				> removes whitespace from beginning and end
+			> map(int, arr[])
+				> applies functino to all members of the provided data
+
+
+	> input() : reads one line
+		> will try to guess what your input type is and evaluate it
+			> res = input()
+			>>>> 5 + 2
+			> res = 12
+
+> main function
+	> including a main function in a module (python file) allows you to import the functional code in the module and not the execution code.  Becuase the execution code is in the main, and you don't want to import that.
+		> you must have this lil line of code
+			> if __name__ == '__main__':
+				main()
+
 
 > opening a file
 	> f = open('filename', opperation)
@@ -50,6 +75,17 @@ Question:
 	> import json
 	> dumps: takes python object and conv erts it to a string
 	> loads: takes a JSON sting and converts it to a pythong object
+
+	> JSON
+	> 	import json
+		fh = open('data.json')
+		data = json.load(fh) // data is of type dict
+
+	> // write json to a file
+		json.dump(data, fh) // where data is a python dictinary
+		> json.dump(data, fh, indent=4, separators=(',', ': '))
+			> json dump can take arguments to make the dump more readable
+
 
 > _
 	> CL tool : represents the result of the previous command
