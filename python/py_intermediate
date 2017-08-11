@@ -42,6 +42,18 @@ arrays
 		> which is to say a = b does NOT create a copy
 	> y = list(x) : creates a copy of x
 
+string
+	> immutable
+		> does not support s[i] = 'a'
+		> insead : 
+			s = list(s)
+			s[i] = 'a'
+			''.join(s)
+
+tuples
+
+dictionary
+
 scope
 	> array outside of function can get changed in function and it will be reflected outside of function
 

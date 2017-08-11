@@ -11,21 +11,6 @@ Python Syntax
 		> with MyClass() as a
 			a.do_something
 
-> exceptions
-	> best way to find out what exception is going to be raised is to try it and see what happens
-	> ex: 
-		> 	try:
-				some code
-			except ErrorType:
-				print('trapped error')
-				print('this is what happened')
-	> or: 
-			except(Error1, Error2)
-	> trapping an error allows us to handle it as we please
-	> set the error raised to a variable
-		> except ZeroDivisionError, e:
-			print(e.message)
-			print(e.args)
 
 
 

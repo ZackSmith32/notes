@@ -1,0 +1,28 @@
+Unit Testing
+
+> pytest
+	> pip install pytest
+	> looks for a file with "test_" prepended to it "test_my_prog"
+		> looks within this file for functions with "test_" prepended to it
+		> in the file import the program that you want to unit test
+
+	> run:
+		> from terminal: py.test
+			> output of test file will be printed out
+			> shows values of assert statement (one of the values of pytest)
+
+	> make sure that your program fails properly
+		def test_my_func():
+			with pytest.rases(TypeError):
+				my_program.my_func('hello')
+
+		> with pytest.raises(TypeError)
+			> can be read as under the assumption that was is in the followin block will raise a TypeError exception.  Check if this code raises a TypeError exceptino.
+
+
+
+> assert 5 == 5,  "message"
+	> true : get nothing back
+	> not true : Assertion error
+
+

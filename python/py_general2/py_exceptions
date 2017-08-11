@@ -1,0 +1,57 @@
+> exceptions
+	> best way to find out what exception is going to be raised is to try it and see what happens
+	> ex: 
+		> 	try:
+				some code
+			except ErrorType:
+				print('trapped error')
+				print('this is what happened')
+		> or: except(Error1, Error2)
+			> this catches two types of errors
+		> or : 
+			except ErrorType, e:
+				print(e.message)	// prints message associated with error
+				print(e.args)		// prints message and other values that are important to the exception
+			> 'e' is an instance of the caught exception class
+		> in the try block, everything after the code that throws the error does not get run if an error is thrown 
+	> trapping an error allows us to handle it as we please
+	> set the error raised to a variable
+		> except ZeroDivisionError, e:
+			print(e.message)
+			print(e.args)
+	> exit() : exits a program
+	> error types
+		> IndexError : trying to access an array index that does not exist
+		> KeyError : when you look a key up in a dictionary that does not exist
+		> TyepError : when you are passing a character to something that requires an integer.  Can be applied to other things as well.
+		> ValueError : when you enter in the right type, but the value of the type causes a problem in the program
+		> ZeroDivisionError : self explanatory
+	> raise an exception
+		> raise ErrorType('messge to be associated with the error')
+		> ex: you can catch an error, and then raise the same error with a custom more explicit message
+			> try:
+				arr[var] = 42
+			except TypeError:
+				raise TypeError("that value you inputted was a character not an integer")
+			> you can then catch this error later on.
+
+> custom exceptions:
+	class MyError(Exception):
+		def __init__(self, *args):	// *args means you can accept any number of args, and they will be stored in a tuple
+			if args:
+				self.message = args[0]
+			else:
+				self.message = ''
+
+		def __str__(self):
+			if self.message:
+				return "here's a myError exception with a message: " + self.message
+			else:
+				return "MyException"
+
+> useful functions for testing for exceptions
+	> isinstance(var, (int, float))
+		> tests if int is an instance of one of those two
+		> good if you need to test multiple types
+
+	> type
