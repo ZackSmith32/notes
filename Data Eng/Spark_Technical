@@ -1,0 +1,20 @@
+Spark Technical
+
+> imports 
+	> from pyspark import SarkConf, SparkContext
+	> import collections
+
+> SparkConf() : spark configuration
+	> .setMaster('local') : work on local box
+	> .setAppName('Name') : if you look in the Spark webui you can identify the process by the name
+
+> sc = SparkContext(conf = conf)
+
+> sc.textFile("<address to data>") : way to create an RDD
+
+> ratings = lines.map(lambda x: x.split()[2])
+	> split each line of text in the file
+	> take the index 2 field from each line and put that in the new RDD that we are calling ratings 
+
+> result = ratings.countByValue()
+	> this is an action and it returns tuples, (rating, count)

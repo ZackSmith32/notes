@@ -1,0 +1,87 @@
+Spark 
+
+> Set Up
+	> spark terminal : spark-shell
+
+	> pyspark : python terminal for working with spark
+
+	> canopy : 
+		> applications > canopy
+		> then tools > canopy terminal
+
+		> seems to be an ide...
+
+	> in the canopy termminal
+		> spark-submit script.py ; runs the spark python script
+
+> Spark Background
+	> can query data on distributed systems
+	> faster than map reduce
+	> uses DAG engine : Directed Acyclic Graph Engine
+
+	> RDD ; Resilient Distbuted Data Set
+		> main obect that Spark uses
+
+	> spark components
+		> spark core
+		> sub libraries that run on top of core
+			> spark streaming : real time data
+			> spark SQL ; run sql commands on a data set
+			> spark MLib ; machine learning
+			> spark GraphX ; graphs of information
+
+> RDD : represents a big data set
+	> sc : spark context
+		> use this to create RDDs
+		> sc.textFile("")
+			> creates an RDD object
+			> can use an s3 or hdfs file
+		> can die it to other data bases
+			> sql 
+			> nosql (Cassandra)
+	> transforming
+		> map : applies a function to all members of an RDD
+			> rdd.map(lambda x: x * x)
+			> rdd.map(square) // where square is a function defined elsewhere
+
+		> flatmap : multiple values for every input RDD
+		> filter : trim out information
+		> distinct : unique
+		> sample : random sample
+		> union/intersection/subtract/cartesian : 
+	> actions
+		> collect ; dummp out all values
+		> count ; ...
+		> countByValue : 
+		> take : sample
+		> top : sample
+		> reduce : write a function that allows you to combine all the values for a given key
+
+		> nothing happens until an action is called
+
+> RDD ; Key Values
+	> looks like a noSQL data base
+	> totalsByAge = rdd.map(lambda x: (x, 1))
+		> for each x create a tuple (x, 1)
+
+	> rdd.reduceByKey() : combine values with the same key
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
