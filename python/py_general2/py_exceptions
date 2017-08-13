@@ -26,14 +26,15 @@
 		> TyepError : when you are passing a character to something that requires an integer.  Can be applied to other things as well.
 		> ValueError : when you enter in the right type, but the value of the type causes a problem in the program
 		> ZeroDivisionError : self explanatory
-	> raise an exception
-		> raise ErrorType('messge to be associated with the error')
-		> ex: you can catch an error, and then raise the same error with a custom more explicit message
-			> try:
-				arr[var] = 42
-			except TypeError:
-				raise TypeError("that value you inputted was a character not an integer")
-			> you can then catch this error later on.
+		
+> raise an exception
+	> raise ErrorType('messge to be associated with the error')
+	> ex: you can catch an error, and then raise the same error with a custom more explicit message
+		> try:
+			arr[var] = 42
+		except TypeError:
+			raise TypeError("that value you inputted was a character not an integer")
+		> you can then catch this error later on.
 
 > custom exceptions:
 	class MyError(Exception):

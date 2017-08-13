@@ -14,7 +14,7 @@ pandas : manipulate data
 			> selects the first column but filters the data on another column
 
 	> create new column
-		> data_fram["new_var"] = 0
+		> data_frame["new_var"] = 0
 
 	> access multiple columns
 		> data_frame[["col1", "col2"]]

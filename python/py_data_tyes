@@ -17,7 +17,12 @@ math stuff
 	> ^  : bitwise xor
 	> // : division and disgard remainder
 
-arrays
+list : aka arrays
+	> mutable
+	> innitialize a list
+		> a = [''] * 20
+		> a = list(range(20)) # [1, 2, 3, 4 ... 19]
+			> you can put anything iterable in there, like a tuple, or a set
 	> arr.append(xxx)
 	> built in functions
 		> max(arr)
