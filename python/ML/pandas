@@ -1,0 +1,24 @@
+pandas : manipulate data
+
+> read_csv : 
+
+> dataFrame objects : how pandas represents datasets
+	> .describe() : summarizes the comuns and features
+	> .shape
+	> .values : returns values
+	> .value_counts([normalize = True]) : counts the different values of the dataview
+		> takes optional normalize argument that returns the value counts as proportions
+
+	> filtering
+		> data_frame["select_this_column"][data_frame["col"] == 'filter']
+			> selects the first column but filters the data on another column
+
+	> create new column
+		> data_fram["new_var"] = 0
+
+	> access multiple columns
+		> data_frame[["col1", "col2"]]
+
+	> group by
+		> dataset.groupby('column_name').size()
+			> shows row count for each different value in the specified column

@@ -1,0 +1,47 @@
+numPy
+
+> numPy array
+	> perform calculations over entire array
+	> my_list = np.array([])
+	> only contains one type
+	> + : sums element by element, insead of concatenating like in python
+	> my_list > 15
+		> reuturns an array of booleans
+	> my_list[my_list > 15]
+		> returns subset of my_list
+
+	> 2d
+		> np_2d[1][5] = np_2d[1, 5]
+			> np[:][3 : 6] = np[:, 3:6]
+		> you can multiply arrays together
+			> you could np.arr1[1003][3] * np.arr2[3]
+
+	> you can use one array as the indexes to select from another
+		> arr1[ arr2 == 'buzz']
+		> works best when the two arrays are related in some way
+
+	> statistics
+		> np.mean
+		> np.median
+		> np.corrcoef
+		> np.std
+
+		> numpy is fast because of the data homodeneity
+
+> decision tree
+	> target : what is being predicted : 1d data set
+		> target = train["Survived"].values
+	> features : the predictors : data set
+		> features_one = train[["Pclass", "Sex", "Age", "Fare"]].values
+
+	> make the tree
+		> my_tree = tree.DecisionTreeClassifier()
+		> my_tree = my_tree.fit(features, target)
+
+	> .feature_imporatnces_
+		> significance of the predictors 
+	> .score(features, target)
+		> mean accuracy
+
+
+

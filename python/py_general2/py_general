@@ -1,0 +1,55 @@
+Python Syntax
+
+> import abcd as xyz: rename imported code as xyz
+> from abcd import tt, uu: import specific variables from a module
+
+> with : creates a block, that when it is done will close an open filehandle
+	> performs cleanup when code leaves the block
+	> calls __enter__ at the beginnint
+	> calls __exit__ at the end
+	> it's good to know this so that you can implement __enter__ and __exit__ in your own classes, and those methods will be called when used with "with" as shown below
+		> with MyClass() as a
+			a.do_something
+
+
+
+
+> logging : print statements while program is running
+	> logging module
+	> levels of logging
+		> debug
+		> info
+		> warning
+	> you can log to a file
+		> file can be wiped before every run, or appended to the end
+		> date option
+		
+
+> general
+	> do what you want to do, then trap errors, that is a general practice in python.  For instance calling methods on objects that might throw an error
+
+> debugging
+	> PDB : python debugger
+		> import pdb
+		> put a line where you want to stop the program
+			> pdb.set_trace()
+		> in the terminal you can type out the names of variables, then when you are done inspecting type "continue"
+		> "quit" : exit debugger
+		> "n" : next: takes you to the next break
+		> "s" : step: takes you to next line, will enter into other functions where next will skip over functions
+		> "l" : shows you where you are in the code
+		> "h" : help : list of commands that are available
+
+> style
+	> modules : all_lower_case
+	> class : CamelCase
+	> globals and locals : all_lower_case
+	> fucntions/methods : all_lower_case
+	> constants : ALL_CAPS
+
+	> attributes
+		> private : _private_name
+
+list comprehension
+
+does python pass copies or references?

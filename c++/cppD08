@@ -27,4 +27,6 @@ STL - standard Library
 	> fixed size, have to know the size at compile time
 
 > std::set
-	> 
+	> store unique elements
+	> elements are const
+	> elements can be inserted or removed

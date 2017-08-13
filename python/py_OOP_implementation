@@ -1,0 +1,43 @@
+> defining a class
+	> class MyClass(object):
+		> what to put int the parens?
+			> this is the class that the new class that your are defining enherits from.  If you put object, that is a python class.
+
+	> pass : a class has no contents
+	
+> method
+	> def name(self):
+		<what the method does>
+	> you need to pass self, cause when you call a method you implicitly pass the instance.  So if you don't include self in the def then when you call the method there will be an argument passed and the method isn't expecting one which leads to error
+
+	> setter method: you can set variables of an instance through a method
+		> def name(self):
+			self.var = 42
+	> using such methods are a gateway to the instances state, ensuring the integrity of the data
+
+	> getter method: gets a value of an instance
+
+> __init__ 
+	> set variables when you init an instance
+	> __xys__ : means private
+	> def __init__(self):
+		print 'calling __init__'
+		self.val = 0;
+	> can pass arg: __init__(self, num):
+		> me = myObj(5) : this is how you an arg to an init method
+		> should include a validation try for input values
+	> inheriting constructors : to inherit a constructor from a parent class put this code in child class __init__ method
+		> super(ChildClass, self).__init__(arg)
+
+	> inheritance
+		> check the order of classes that a subclass inherits from
+			> print obj.mro()
+
+> magic methods
+	> __add__ : if you include a method with that name in your class, then you can call that method by putting a '+' between two instances of that class
+		> == : var.__eq__('abc')
+		> len(var) : var.__len__()
+
+> builtin classes
+	> anything in python is a class
+	> if you want to modify something like dictionary, then you can make a class that inherits from dictionary and does some other stuff then calls parent class' (dict) methods

@@ -1,0 +1,93 @@
+
+> ML
+	> retrieve the perfect function from noisy data
+
+> supervised ML
+	> for training data you know what the correct answer is (i.e. this is an image of a cat)
+	> learn from labeled training data
+
+	> classification or regression models
+		> classification attempts to draw a line the separates two groups
+		> regression draws a line that best represents a set of data
+
+> cost function: tells us how well a line fits data
+	> low : better fit
+	> high : worse fit
+	> types
+		> mean squared error
+
+	> gradient descent : how to minimize the cost function
+
+> machine learning algorithms
+	> perceptron : neural networks
+		> describes a very simple node that is binary.  Given inputs it responds yes or no.  See logistic regression below for a more flexible algorithm
+			> essentailly it draws a line to separate two outcomes, attempting to classify  as many data points as possible correctly.
+		> supervised learning
+		> can only predic yes or no
+
+	> logistic regression
+		> draws a line that tries to represent given data
+		> like a preceptron algo accept it brings in probabilities
+			> so a yes/no decision can be specturm of yes probabilities depending on the inputs
+
+	> support vector machines:
+		> support vector is the vector from a data point to the decision boundary
+			> all the SV's are perpendicular to the line becasue that is by definition the shortest path to the line
+		> this type of machine learning minimizes the support vector
+
+	> neural network
+		>
+		> backpropagation : when you start at the last layer of neural network, and work your way towards the first layer, adjusting the weights along the way as to minimize the cost function
+
+> terms
+	> margin : distance from dicision boundary
+		> large margin = high confidence in prediction
+
+	> gradient descent : way to find the minimum of a function
+
+	> bias-variance dilema :
+		> both are side effects of the complexity of the model
+		> bias : underfitting
+			> a model is biased towards the chosen model.  Which is to say biased towards a model that does not correctly model the data
+		> variance : overfitting
+			> when you have a model that adapts so much to the data, that it doesn't account for a normal level of variance in the data
+
+		> you can test this dilema by comparing the error on the training data to a test data set
+			> as complexity increases on the training data the error will go down.  But at a certain point increasing the complexity in the model will result in an increase in error on the test data, becuase the model will be overfit to the training data.  Choose a complexity the minimizes the error on the test data
+
+		> regularization : rewarding your model for fitting the test data well, and penalize your model for growing too complex
+
+	> cross validation
+		> divide the entire training set into three parts, and then train our model three times using each of the three parts as the validation set with the remaining two parts making up our actual training set.
+
+	> ensembling
+		> multiple classifiers (in decision trees) trained on random subsets of the training data.
+
+	> data types
+		> categorical
+		> continuous
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
