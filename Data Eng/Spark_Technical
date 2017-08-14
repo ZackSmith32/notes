@@ -6,6 +6,7 @@ Spark Technical
 
 > SparkConf() : spark configuration
 	> .setMaster('local') : work on local box
+		> .setMaster('local[*]') // uses all the cores in your computer
 	> .setAppName('Name') : if you look in the Spark webui you can identify the process by the name
 
 > sc = SparkContext(conf = conf)
@@ -18,3 +19,97 @@ Spark Technical
 
 > result = ratings.countByValue()
 	> this is an action and it returns tuples, (rating, count)
+
+> example break down : 
+
+	> key value mapping
+		> totalsByAge : rdd.mapValues(lambda x: (x, 1)).reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1]))
+			> this is kind of what "count by value" does, but doing it this way gives you the ability to do more things with the data whereas countbyvalue is more of a quick snapshot kinda tool
+		> mapValues(lambda x: (x, 1))
+			> turn the value in to a tuple
+		> reduceByKey(lambda x, y: (x[0] + y[0], x[1] + y[1]))
+			> takes in two values x, y : two rows that have the same key
+			> then adds the first element of said values and second element of said values
+
+		> averagesByAge = totalsByAge.mapValues(lambda x: x[0] / x[1])
+			> divide the first element of the value by the second
+
+		> results averagesByAge.collect()
+
+	> filtering RDDs
+		> minTemps = parsedLines.filter(lambda x: "TMIN" in x[1])
+		> minTemps = stationTemps.reduceByKey(lambda x, y: min(x, y))
+			> takes two records as args that have the same key, and returns the record with the lower of the two values
+
+	> breaking up a file into words (python-y stuff)
+		> words = input.flatMap(normalizeWords)
+			> eachr record is a line with a bunch or words, so this function takes the line an pulls out the words
+
+		> def normalizeWords():
+			return re.compile(r'/W+', re.UNICODE).split(text.lower())
+			> this function uses reges 're' (import re)
+			> r'/W+' built in regex function that strips punctuation
+			> re.UNICODE : tells regex that there might be unicode
+
+	> sorting
+		> doing countByValue by hand : 
+			wordCOunts = words.map(lambda x: (s, 1)).reduceByKey(lambda x, y: x + y)
+		> sort
+			wordCountsSorted = wordCounts.map(lambda (x, y): (y, x)).sortByKey()
+		> get results
+			> results = wordCountSorted.collect()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

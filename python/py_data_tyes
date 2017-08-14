@@ -28,6 +28,9 @@ list : aka arrays
 		> max(arr)
 		> len(arr)
 		> type()
+	> slicing : arr[5:] : does not return a copy
+
+
 	> methods
 		> arr.indx['xyz'] : returns index of 'xyz'
 

@@ -2,8 +2,13 @@ Spark
 
 > Set Up
 	> spark terminal : spark-shell
+		> scala shell for spark
 
 	> pyspark : python terminal for working with spark
+		> /usr/local/bin/pyspark
+		> on my machine 'pyspark' will start this terminal
+		> can run python scripts with spark
+			> auto sets the context I think
 
 	> canopy : 
 		> applications > canopy
@@ -11,8 +16,16 @@ Spark
 
 		> seems to be an ide...
 
-	> in the canopy termminal
-		> spark-submit script.py ; runs the spark python script
+		> in the canopy termminal
+			> spark-submit script.py ; runs the spark python script
+
+	> spark-submit script.py : 
+		> this is how you submit a spark script
+		> is a part of spark and accepts python, scala and java scripts
+		> can be run in regular terminal
+
+	> localhost:4040
+		> you can look at this whilst a job is running on your local machine and there are details about what is going on
 
 > Spark Background
 	> can query data on distributed systems
@@ -39,32 +52,139 @@ Spark
 		> can die it to other data bases
 			> sql 
 			> nosql (Cassandra)
-	> transforming
+	> transforming : transforms aren't actually run until an action is called
 		> map : applies a function to all members of an RDD
 			> rdd.map(lambda x: x * x)
 			> rdd.map(square) // where square is a function defined elsewhere
+			> returns a key value pair
 
 		> flatmap : multiple values for every input RDD
 		> filter : trim out information
 		> distinct : unique
 		> sample : random sample
 		> union/intersection/subtract/cartesian : 
-	> actions
+	> actions : actions cause transforms to be run
 		> collect ; dummp out all values
 		> count ; ...
 		> countByValue : 
 		> take : sample
-		> top : sample
+		> .top(<num lines>) : sample
 		> reduce : write a function that allows you to combine all the values for a given key
+		> .lookup(key) : looks up the value associated with the key in the RDD
+		> .max() : returns the max based on the key
 
 		> nothing happens until an action is called
+		> after an action is called on an RDD the RDD is discarded unless you .cache() (see below)
 
 > RDD ; Key Values
-	> looks like a noSQL data base
+	> can look like a noSQL data base
+		> join, rightOuterJoin, etc.
+
 	> totalsByAge = rdd.map(lambda x: (x, 1))
 		> for each x create a tuple (x, 1)
 
-	> rdd.reduceByKey() : combine values with the same key
+	> rdd.reduceByKey(lambda x, y: x + y) : combine values with the same key
+	> groupByKey() : group values with the same key
+	> sortByKey() : sort RDD by key values
+	> keys() : create RDD of just the keys
+	> values() : create RDD of just the values
+
+	> if your transform does not affect the keys
+		> mapValues
+		> flatMap
+		> these functions increase efficiency because spark is just looking at the values
+
+> Broadcast variable
+	> sc.broadcast(<what you want to broadcast>)
+		> called on the spark context variable
+		> often a dictionary will be broadcast
+		> can broadcast an RDD
+	> sc.value()
+		> how you retrieve the information from the broadcasted variable
+		> sortedWithNames = SortedMovies.map(lambda (count, movie): (nameDict.value[movie], count))
+			> nameDict is the variable that we broadcast earlier in the script
+				> it is looking up the name based on the movie ID, and substituting that in so that it is more readable
+
+
+> Breadth First Search
+	> convert data into a node with connections
+		> (5983, (1234, 5434, 7856, 3453), 9999, WHITE)
+		> node id, (connections, distance, status of node)
+			> status of node : if that node has been visited
+			> distance: number of connections away from root
+
+	> reducer : combines all records with same id, and preserves the connections, the color and the distance.  So basically combines the connection lists
+
+	> accumulator : allows many executors to increment a shared variable
+		> where executor is the governing process on each node of your cluster
+		> sc.accumulator(0)
+
+> Callaborative Filtering
+	> item based collaborative filtering
+		> if two people watch the same movie, and they both have similar opinions of it, then we can deduce that this opinion it true.
+			> therefore we can deduce that another person that has only seen one of the movies, would probably like the other movie.
+
+	> 
+
+> caching
+	> .cache() : saves an RDD
+		> RDD's are discarded after an action is called on them, this allows you to save them because they can be expensive to run
+	> .persist() : writes to disc and takes disc space // takes slower
+
+> running Spark on a cluster in the cloud
+	> EMR : amazon web services elastic mapReduce
+		> can run spark on this hadoop cluster
+
+	> EC2 : how you access your EMR cluster
+		> terminal basically
+
+	> partitioning
+		> .partitionBy() : called on and RDD
+		> join(), groupByKey(), reduceByKey(), combineByKey(), etc.
+			> all of these are very expensive and could benefit from paritioning
+		> parititionBy(100)  // usually a reasonable amount to split by
+
+	> S3 : good place to store your data and your scripts
+
+
+Troubleshooting
+	> logs : log information scrolls by on the master terminal
+	> executors get hung "failing to issue hearbeats"
+		> increase partitions
+		> increase memory
+		> increase machines
+
+	> managing dependencies
+	> update paths when running on the cloud
+
+Spark SQL
+	> DataFrame : dataset of row objects
+		> an RDD of row objects
+		> can run SQL
+		> has a schema (more efficient)
+		> read and write JSON
+		> communicateds with JDBC (Tableau)
+
+	> structuredData = Row(id = data[0], age = data[1], somethingelse = data[2])
+		> thes creates a row object which can be used by the dataframe
+	> dataset = spark.createDataGrame(structuredData)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
