@@ -1,0 +1,23 @@
+
+
+Kafka : distributed sreaming platform
+	> apache product
+	> streaming platform = 
+		> pub/sub to streams
+		> store streams in fault tolerant way
+		> process streams as they occur
+	> uses :
+		> pipeline for streaming data
+		> transforming streaming data
+
+	> details
+		> stream comprised of records
+		> streams stored in categories called topics
+		> each record has key, value, timestamp
+
+	> APIs
+		> producer : an application that publishes data to one of Kafka's topics
+		> consumer : an application that stubcsribes to one or more topics
+		> streams : an application can act as a processor. Input comes from a topic, and output goes to another topic
+		> connector : connect topics to existing data systems
+
