@@ -8,8 +8,18 @@ finish the problem, make sure it look exactly how they want it
 
 build tests, build tests as you go
 
-
-
 IOps input output per second
 what are the key metrics for a server
 sym link vs. hard link
+
+
+python
+	> remember to use sets if it's finding if two things overlap
+	> OOP : user inheritance if at all possible
+	> test
+		> try/except
+		> unit testing
+	
+	> remember that when you are dealing with objects you need to print their attributes
+
+	> I/O in python I'm not good at
